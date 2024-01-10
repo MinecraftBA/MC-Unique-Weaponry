@@ -2,6 +2,7 @@ package ba.minecraft.uniqueweaponry.common.core;
 
 import com.mojang.logging.LogUtils;
 
+import ba.minecraft.uniqueweaponry.common.entity.GrenadeEntityTypes;
 import ba.minecraft.uniqueweaponry.common.item.GrenadeItems;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartedEvent;
@@ -29,8 +30,12 @@ public class UniqueWeaponryMod
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        // Registration of mod provided items.
         GrenadeItems.REGISTRY.register(modEventBus);
         
+        // Registration of mod provided entity types
+    	GrenadeEntityTypes.REGISTRY.register(modEventBus);
+
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 

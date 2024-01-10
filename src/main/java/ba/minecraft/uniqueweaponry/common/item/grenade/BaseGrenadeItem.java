@@ -6,10 +6,10 @@ import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.Snowball;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import ba.minecraft.uniqueweaponry.common.entity.grenade.FlashGrenadeEntity;
 
 public abstract class BaseGrenadeItem extends Item {
 
@@ -31,13 +31,13 @@ public abstract class BaseGrenadeItem extends Item {
 	      level.playSound((Player)null, player.getX(), player.getY(), player.getZ(), SoundEvents.SNOWBALL_THROW, SoundSource.NEUTRAL, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
 
 	      if (!level.isClientSide) {
-	          Snowball snowball = new Snowball(level, player);
-	          snowball.setItem(itemstack);
-	          snowball.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 3.0F, 2.0F);
+	          FlashGrenadeEntity grenade = new FlashGrenadeEntity(level, player);
+	          grenade.setItem(itemstack);
+	          grenade.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 3.0F, 2.0F);
 
 	          //snowball.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);
           	  
-	          level.addFreshEntity(snowball);
+	          level.addFreshEntity(grenade);
 	       }
 	      
 	      player.awardStat(Stats.ITEM_USED.get(this));

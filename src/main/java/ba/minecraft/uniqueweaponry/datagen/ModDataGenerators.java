@@ -9,7 +9,6 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import ba.minecraft.uniqueweaponry.common.core.UniqueWeaponryMod;
 import ba.minecraft.uniqueweaponry.datagen.lang.EnUsLanguageProvider;
 import ba.minecraft.uniqueweaponry.datagen.recipe.*;
-import ba.minecraft.uniqueweaponry.datagen.model.item.*;
 
 @EventBusSubscriber(modid = UniqueWeaponryMod.MODID, bus = Bus.MOD)
 public final class ModDataGenerators {
