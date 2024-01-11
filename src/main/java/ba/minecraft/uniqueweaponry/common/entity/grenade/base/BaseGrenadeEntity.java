@@ -1,11 +1,15 @@
 package ba.minecraft.uniqueweaponry.common.entity.grenade.base;
 
+import java.util.List;
+
 import ba.minecraft.uniqueweaponry.common.entity.grenade.FlashGrenadeEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
 
 public abstract class BaseGrenadeEntity extends ThrowableItemProjectile {
 
@@ -35,6 +39,25 @@ public abstract class BaseGrenadeEntity extends ThrowableItemProjectile {
 			// Remove entity from the world.
 			this.discard();
 		}
+	}
+	
+	protected List<LivingEntity> getAffectedMobs(HitResult hitResult){
+
+		// Get location where grenade hit the ground.
+		Vec3 hitLocation = hitResult.getLocation();
+
+		// Create boundaries of hit area.
+		AABB area = AABB.ofSize(hitLocation, 16, 16, 16);
+
+		//List<Entity> entities = this.level().getEntities(this, area);
+
+		// Get reference to a level where grenade has exploded.
+		Level level = this.level();
+		
+		// Get list of all living entities in the area.
+		List<LivingEntity> mobs = level.getEntitiesOfClass(LivingEntity.class, area);
+
+		return  mobs;
 	}
 	
 }

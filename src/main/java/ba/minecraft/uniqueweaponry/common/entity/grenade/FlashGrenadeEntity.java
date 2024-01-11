@@ -9,7 +9,6 @@ import ba.minecraft.uniqueweaponry.common.item.GrenadeItems;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobCategory;
@@ -17,34 +16,32 @@ import net.minecraft.world.entity.EntityType.Builder;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.HitResult;
 
 public final class FlashGrenadeEntity extends BaseGrenadeEntity {
 
 	// Defines that this entity will be registered as experimentalmod:rpg
-	private static final ResourceLocation ENTITY_LOC = 
-			new ModResourceLocation("flash_grenade");
+	private static final ResourceLocation ENTITY_LOC = new ModResourceLocation("flash_grenade");
 
 	public static EntityType<FlashGrenadeEntity> createType() {
-		
+
 		Builder<FlashGrenadeEntity> builder = Builder.of(FlashGrenadeEntity::new, MobCategory.MISC);
 
 		builder.sized(0.5F, 0.5F);
 		builder.clientTrackingRange(20);
 		builder.updateInterval(20);
-		
+
 		String id = ENTITY_LOC.toString();
-		
+
 		EntityType<FlashGrenadeEntity> entityType = builder.build(id);
 
 		return entityType;
 	}
-	
+
 	public FlashGrenadeEntity(EntityType<? extends ThrowableItemProjectile> entityType, Level level) {
 		super(entityType, level);
 	}
-	
+
 	public FlashGrenadeEntity(Level level, LivingEntity thrower) {
 		super(GrenadeEntityTypes.FLASH_GRENADE.get(), thrower, level);
 	}
@@ -59,38 +56,24 @@ public final class FlashGrenadeEntity extends BaseGrenadeEntity {
 	}
 
 	@Override
-	protected void onHit(HitResult result) {
+	protected void onHit(HitResult hitResult) {
+
+		// Get affected mobs.
+		List<LivingEntity> mobs = getAffectedMobs(hitResult);
 		
-		// Get location where grenade hit the ground.
-		var hitLocation = result.getLocation();
-		
-		// Create boundaries of hit area.
-		AABB area = AABB.ofSize(hitLocation, 16, 16, 16);
-		
-		// Get list of all entities in the area.
-		List<Entity> entities = this.level().getEntities(this, area);
-		
-		// Iterate through list of all entities in the area.
-		for(Entity entity : entities) {
-			
-			// IF: Entity is living entity.
-			if(entity instanceof LivingEntity) {
-				
-				// Cast entity as living entity.
-				LivingEntity livingEntity = (LivingEntity) entity;
-				
-				// Create instance of blindness effect.
-				MobEffectInstance effectInstance = new MobEffectInstance(MobEffects.BLINDNESS, 5 * 20);
-				
-				// Apply it to mob.
-				livingEntity.addEffect(effectInstance);
-			}
+		// Iterate through mobs
+		for (LivingEntity mob : mobs) {
+
+			// Create instance of blindness effect.
+			MobEffectInstance effectInstance = new MobEffectInstance(MobEffects.BLINDNESS, 5 * 20);
+
+			// Apply effect to mob.
+			mob.addEffect(effectInstance);
 		}
-		
+
 		// Call mandatory base class code.
-		super.onHit(result);
-		
-		
+		super.onHit(hitResult);
+
 	}
 
 }
