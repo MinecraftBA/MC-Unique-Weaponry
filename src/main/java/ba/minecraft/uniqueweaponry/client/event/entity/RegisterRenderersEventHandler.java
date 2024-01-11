@@ -14,7 +14,7 @@ public final class RegisterRenderersEventHandler {
 	@SubscribeEvent
     public static void onRegisterRenderers(final RegisterRenderers event) {
 
-		// Entities
+		// Throwable entities
 		event.registerEntityRenderer(GrenadeEntityTypes.FLASH_GRENADE.get(), ThrownItemRenderer::new);
 
 	}

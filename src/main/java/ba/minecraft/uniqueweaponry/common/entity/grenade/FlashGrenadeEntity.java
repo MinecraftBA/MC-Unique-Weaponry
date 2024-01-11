@@ -1,17 +1,18 @@
 package ba.minecraft.uniqueweaponry.common.entity.grenade;
 
 import ba.minecraft.uniqueweaponry.common.entity.GrenadeEntityTypes;
+import ba.minecraft.uniqueweaponry.common.entity.grenade.base.BaseGrenadeEntity;
 import ba.minecraft.uniqueweaponry.common.helpers.ModResourceLocation;
 import ba.minecraft.uniqueweaponry.common.item.GrenadeItems;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.EntityType.Builder;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.HitResult;
 
 public final class FlashGrenadeEntity extends BaseGrenadeEntity {
 
@@ -24,7 +25,7 @@ public final class FlashGrenadeEntity extends BaseGrenadeEntity {
 		Builder<FlashGrenadeEntity> builder = Builder.of(FlashGrenadeEntity::new, MobCategory.MISC);
 
 		builder.sized(0.5F, 0.5F);
-		builder.clientTrackingRange(4);
+		builder.clientTrackingRange(20);
 		builder.updateInterval(20);
 		
 		String id = ENTITY_LOC.toString();
@@ -49,6 +50,15 @@ public final class FlashGrenadeEntity extends BaseGrenadeEntity {
 	@Override
 	protected Item getDefaultItem() {
 		return GrenadeItems.FLASH_GRENADE.get();
+	}
+
+	@Override
+	protected void onHit(HitResult pResult) {
+		
+		// Call mandatory base class code.
+		super.onHit(pResult);
+		
+		
 	}
 
 }
