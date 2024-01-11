@@ -29,27 +29,40 @@ public abstract class BaseGrenadeItem<T extends BaseGrenadeEntity> extends Item 
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level level, Player thrower, InteractionHand usedHand) {
 	    
+		// Get reference to grenade held in hand.
 		ItemStack itemstack = thrower.getItemInHand(usedHand);
 	      
-	      level.playSound((Player)null, thrower.getX(), thrower.getY(), thrower.getZ(), SoundEvents.SNOWBALL_THROW, SoundSource.NEUTRAL, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
+		// Play throwing sound.
+		level.playSound((Player)null, thrower.getX(), thrower.getY(), thrower.getZ(), SoundEvents.TRIDENT_THROW, SoundSource.NEUTRAL, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
 
-	      if (!level.isClientSide) {
-	          T grenade = CreateEntity(level, thrower);
-	          grenade.setItem(itemstack);
-	          grenade.shootFromRotation(thrower, thrower.getXRot(), thrower.getYRot(), 0.0F, 3.0F, 2.0F);
+		// IF: Code is executing on server side.
+		if (!level.isClientSide) {
 
-	          //snowball.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);
+			// Create instance of grenade entity.
+			T grenade = CreateEntity(level, thrower);
+	          
+			// Set grenade item that is being thrown.
+			grenade.setItem(itemstack);
+			
+			// Shoot granade.
+			grenade.shootFromRotation(thrower, thrower.getXRot(), thrower.getYRot(), 0.0F, 1.5F, 1.0F);
           	  
-	          level.addFreshEntity(grenade);
-	       }
+			// Add it to the level.
+			level.addFreshEntity(grenade);
+		}
 	      
-	      thrower.awardStat(Stats.ITEM_USED.get(this));
+		// Award stat that item is used.
+		thrower.awardStat(Stats.ITEM_USED.get(this));
 	      
-	      if (!thrower.getAbilities().instabuild) {
-	         itemstack.shrink(1);
-	      }
+		// IF: It is not in creative mode.
+		if (!thrower.getAbilities().instabuild) {
+			
+			// Reduce quantity in inventory by one.
+			itemstack.shrink(1);
+		}
 
-	      return InteractionResultHolder.sidedSuccess(itemstack, level.isClientSide());
+		// Incidate that use was successful.
+		return InteractionResultHolder.sidedSuccess(itemstack, level.isClientSide());
 	}
 	
 	
