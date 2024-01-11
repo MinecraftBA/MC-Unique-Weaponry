@@ -2,9 +2,9 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [36, 36],
 	"textures": {
-		"1": "uniqueweaponry:item/flash_grenade_fuse",
-		"2": "uniqueweaponry:item/flash_grenade_body",
-		"particle": "uniqueweaponry:item/flash_grenade_body"
+		"1": "uniqueweaponry:item/ignite_grenade_fuse",
+		"2": "uniqueweaponry:item/ignite_grenade_body",
+		"particle": "uniqueweaponry:item/ignite_grenade_body"
 	},
 	"elements": [
 		{
