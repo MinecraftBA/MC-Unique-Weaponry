@@ -30,6 +30,17 @@ public final class GrenadeItemRecipeProvider extends RecipeProvider {
 	    	.unlockedBy(getHasName(Items.GUNPOWDER), has(Items.GUNPOWDER))
 	    	.save(consumer);
 		
+			ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GrenadeItems.IGNITE_GRENADE.get(), 1)
+	    	.define('F', Items.FIRE_CHARGE)
+	    	.define('G', Items.GUNPOWDER)
+	    	.define('R', Items.REDSTONE)
+	    	.define('C', Items.COPPER_INGOT)
+	    	.pattern(" R ")
+	    	.pattern("CFC")
+	    	.pattern(" G ")
+	    	.unlockedBy(getHasName(Items.GUNPOWDER), has(Items.GUNPOWDER))
+	    	.save(consumer);
+		
 	}
 	
 }
