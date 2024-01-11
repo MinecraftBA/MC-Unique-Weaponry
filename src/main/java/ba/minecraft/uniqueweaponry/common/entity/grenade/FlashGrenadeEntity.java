@@ -7,12 +7,15 @@ import ba.minecraft.uniqueweaponry.common.entity.grenade.base.BaseGrenadeEntity;
 import ba.minecraft.uniqueweaponry.common.helpers.ModResourceLocation;
 import ba.minecraft.uniqueweaponry.common.item.GrenadeItems;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.EntityType.Builder;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
@@ -58,9 +61,12 @@ public final class FlashGrenadeEntity extends BaseGrenadeEntity {
 	@Override
 	protected void onHit(HitResult hitResult) {
 
+		// Make explosion audio/visual effects.
+		explode(SoundEvents.GENERIC_EXPLODE);
+
 		// Get affected mobs.
 		List<LivingEntity> mobs = getAffectedMobs(hitResult);
-		
+
 		// Iterate through mobs
 		for (LivingEntity mob : mobs) {
 

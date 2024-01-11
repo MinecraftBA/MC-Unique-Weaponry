@@ -10,14 +10,12 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import ba.minecraft.uniqueweaponry.common.core.UniqueWeaponryMod;
 import ba.minecraft.uniqueweaponry.common.item.GrenadeItems;
 
-@EventBusSubscriber(modid = UniqueWeaponryMod.MODID, bus = Bus.FORGE)
+@EventBusSubscriber(modid = UniqueWeaponryMod.MODID, bus = Bus.MOD)
 public final class BuildCreativeModeTabContentsEventHandler {
 
 	@SubscribeEvent()
 	public static void onBuildCreativeModeTabContents(final BuildCreativeModeTabContentsEvent event) {
 
-		System.out.print("Hi");
-		
 		ResourceKey<CreativeModeTab> tabKey = event.getTabKey();
 
 		if(tabKey == CreativeModeTabs.COMBAT) {

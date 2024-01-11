@@ -3,8 +3,12 @@ package ba.minecraft.uniqueweaponry.common.entity.grenade.base;
 import java.util.List;
 
 import ba.minecraft.uniqueweaponry.common.entity.grenade.FlashGrenadeEntity;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
@@ -46,10 +50,11 @@ public abstract class BaseGrenadeEntity extends ThrowableItemProjectile {
 		// Get location where grenade hit the ground.
 		Vec3 hitLocation = hitResult.getLocation();
 
+		// Set center of area to be 7 steps above so that bottom of area is exactly where grenade hit.
+		Vec3 areaCenter = hitLocation.add(0, 0, 7);
+		
 		// Create boundaries of hit area.
-		AABB area = AABB.ofSize(hitLocation, 16, 16, 16);
-
-		//List<Entity> entities = this.level().getEntities(this, area);
+		AABB area = AABB.ofSize(areaCenter, 16, 16, 16);
 
 		// Get reference to a level where grenade has exploded.
 		Level level = this.level();
@@ -60,4 +65,13 @@ public abstract class BaseGrenadeEntity extends ThrowableItemProjectile {
 		return  mobs;
 	}
 	
+	protected void explode(SoundEvent soundEvent) {
+		
+		Level level = this.level();
+		
+		level.playSound((Player)null, this.getX(), this.getY(), this.getZ(), soundEvent, SoundSource.NEUTRAL, 10.0F, 1.0F);
+
+	    level.explode(this, this.getX(), this.getY(0.0625D), this.getZ(), 0.0F, Level.ExplosionInteraction.NONE);
+
+	}
 }

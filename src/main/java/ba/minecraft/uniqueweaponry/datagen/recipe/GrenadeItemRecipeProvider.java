@@ -18,15 +18,18 @@ public final class GrenadeItemRecipeProvider extends RecipeProvider {
 	
 	@Override
 	protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
-	      ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GrenadeItems.FLASH_GRENADE.get(), 1)
-	      .define('S', Items.SPIDER_EYE)
-		  .define('G', Items.GUNPOWDER)
-		  .define('R', Items.REDSTONE)
-	      .pattern(" R ")
-	      .pattern("GSG")
-	      .pattern(" G ")
-	      .unlockedBy(getHasName(Items.GUNPOWDER), has(Items.GUNPOWDER))
-	      .save(consumer);
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GrenadeItems.FLASH_GRENADE.get(), 1)
+	    	.define('D', Items.GLOWSTONE_DUST)
+	    	.define('G', Items.GUNPOWDER)
+	    	.define('R', Items.REDSTONE)
+	    	.define('I', Items.IRON_INGOT)
+	    	.pattern(" R ")
+	    	.pattern("IDI")
+	    	.pattern(" G ")
+	    	.unlockedBy(getHasName(Items.GUNPOWDER), has(Items.GUNPOWDER))
+	    	.save(consumer);
+		
 	}
 	
 }
