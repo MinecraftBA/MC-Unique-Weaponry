@@ -2,6 +2,7 @@ package ba.minecraft.uniqueweaponry.common.entity;
 
 import ba.minecraft.uniqueweaponry.common.core.UniqueWeaponryMod;
 import ba.minecraft.uniqueweaponry.common.entity.grenade.FlashGrenadeEntity;
+import ba.minecraft.uniqueweaponry.common.entity.grenade.IgniteGrenadeEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -16,5 +17,8 @@ public final class GrenadeEntityTypes {
 
 	public static final RegistryObject<EntityType<FlashGrenadeEntity>> FLASH_GRENADE =
 			REGISTRY.register("flash_grenade", () -> FlashGrenadeEntity.createType());
+	
+	public static final RegistryObject<EntityType<IgniteGrenadeEntity>> IGNITE_GRENADE =
+			REGISTRY.register("ignite_grenade", () -> IgniteGrenadeEntity.createType());
 
 }

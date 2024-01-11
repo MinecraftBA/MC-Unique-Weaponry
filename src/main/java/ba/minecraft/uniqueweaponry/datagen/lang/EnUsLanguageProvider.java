@@ -21,10 +21,12 @@ public final class EnUsLanguageProvider extends LanguageProvider {
 
 	private void addGrenadeItems() {
 		add(GrenadeItems.FLASH_GRENADE.get(), "Flash Grenade");
+		add(GrenadeItems.IGNITE_GRENADE.get(), "Ignite Grenade");
 	}
 	
 	private void addGrenadeEntities() {
 		add(GrenadeEntityTypes.FLASH_GRENADE.get(), "Flash Grenade");
+		add(GrenadeEntityTypes.IGNITE_GRENADE.get(), "Ignite Grenade");
 	}
 	
 }

@@ -2,6 +2,7 @@ package ba.minecraft.uniqueweaponry.common.item;
 
 import ba.minecraft.uniqueweaponry.common.core.UniqueWeaponryMod;
 import ba.minecraft.uniqueweaponry.common.item.grenade.FlashGrenadeItem;
+import ba.minecraft.uniqueweaponry.common.item.grenade.IgniteGrenadeItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -16,5 +17,8 @@ public final class GrenadeItems {
 	
 	public static final RegistryObject<FlashGrenadeItem> FLASH_GRENADE = 
 			REGISTRY.register("flash_grenade", () -> new FlashGrenadeItem());
+	
+	public static final RegistryObject<IgniteGrenadeItem> IGNITE_GRENADE = 
+			REGISTRY.register("ignite_grenade", () -> new IgniteGrenadeItem());
 
 }
