@@ -4,7 +4,6 @@ import java.util.List;
 
 import ba.minecraft.uniqueweaponry.common.entity.grenade.FlashGrenadeEntity;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -67,11 +66,13 @@ public abstract class BaseGrenadeEntity extends ThrowableItemProjectile {
 	
 	protected void explode(SoundEvent soundEvent) {
 		
+		// Get reference to a level where grenade is exploding.
 		Level level = this.level();
 		
+		// Play explosion sound.
 		level.playSound((Player)null, this.getX(), this.getY(), this.getZ(), soundEvent, SoundSource.NEUTRAL, 10.0F, 1.0F);
 
+		// Create explosion event without damage.
 	    level.explode(this, this.getX(), this.getY(0.0625D), this.getZ(), 0.0F, Level.ExplosionInteraction.NONE);
-
 	}
 }

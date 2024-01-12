@@ -34,9 +34,9 @@ public final class GrenadeItemRecipeProvider extends RecipeProvider {
 	    	.define('F', Items.FIRE_CHARGE)
 	    	.define('G', Items.GUNPOWDER)
 	    	.define('R', Items.REDSTONE)
-	    	.define('C', Items.COPPER_INGOT)
+	    	.define('I', Items.IRON_INGOT)
 	    	.pattern(" R ")
-	    	.pattern("CFC")
+	    	.pattern("IFI")
 	    	.pattern(" G ")
 	    	.unlockedBy(getHasName(Items.GUNPOWDER), has(Items.GUNPOWDER))
 	    	.save(consumer);
