@@ -19,14 +19,14 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
 
-public class IgniteGrenadeEntity extends BaseGrenadeEntity {
+public class FreezeGrenadeEntity  extends BaseGrenadeEntity {
 
 	// Defines that this entity will be registered as experimentalmod:rpg
-	private static final ResourceLocation ENTITY_LOC = new ModResourceLocation("ignite_grenade");
+	private static final ResourceLocation ENTITY_LOC = new ModResourceLocation("FREEZE_grenade");
 
-	public static EntityType<IgniteGrenadeEntity> createType() {
+	public static EntityType<FreezeGrenadeEntity> createType() {
 
-		Builder<IgniteGrenadeEntity> builder = Builder.of(IgniteGrenadeEntity::new, MobCategory.MISC);
+		Builder<FreezeGrenadeEntity> builder = Builder.of(FreezeGrenadeEntity::new, MobCategory.MISC);
 
 		builder.sized(0.5F, 0.5F);
 		builder.clientTrackingRange(20);
@@ -34,26 +34,26 @@ public class IgniteGrenadeEntity extends BaseGrenadeEntity {
 
 		String id = ENTITY_LOC.toString();
 
-		EntityType<IgniteGrenadeEntity> entityType = builder.build(id);
+		EntityType<FreezeGrenadeEntity> entityType = builder.build(id);
 
 		return entityType;
 	}
 
-	public IgniteGrenadeEntity(EntityType<? extends ThrowableItemProjectile> entityType, Level level) {
+	public FreezeGrenadeEntity(EntityType<? extends ThrowableItemProjectile> entityType, Level level) {
 		super(entityType, level);
 	}
 
-	public IgniteGrenadeEntity(Level level, LivingEntity thrower) {
-		super(GrenadeEntityTypes.IGNITE_GRENADE.get(), thrower, level);
+	public FreezeGrenadeEntity(Level level, LivingEntity thrower) {
+		super(GrenadeEntityTypes.FLASH_GRENADE.get(), thrower, level);
 	}
 
-	public IgniteGrenadeEntity(Level level) {
-		super(GrenadeEntityTypes.IGNITE_GRENADE.get(), level);
+	public FreezeGrenadeEntity(Level level) {
+		super(GrenadeEntityTypes.FREEZE_GRENADE.get(), level);
 	}
 
 	@Override
 	protected Item getDefaultItem() {
-		return GrenadeItems.IGNITE_GRENADE.get();
+		return GrenadeItems.FREEZE_GRENADE.get();
 	}
 
 	@Override
@@ -81,3 +81,4 @@ public class IgniteGrenadeEntity extends BaseGrenadeEntity {
 	}
 
 }
+

@@ -18,6 +18,8 @@ public final class RegisterRenderersEventHandler {
 		event.registerEntityRenderer(GrenadeEntityTypes.FLASH_GRENADE.get(), ThrownItemRenderer::new);
 		
 		event.registerEntityRenderer(GrenadeEntityTypes.IGNITE_GRENADE.get(), ThrownItemRenderer::new);
+		
+		event.registerEntityRenderer(GrenadeEntityTypes.FREEZE_GRENADE.get(), ThrownItemRenderer::new);
 	}
 	
 }

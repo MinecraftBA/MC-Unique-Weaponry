@@ -21,6 +21,7 @@ public final class BuildCreativeModeTabContentsEventHandler {
 		if(tabKey == CreativeModeTabs.COMBAT) {
 			event.accept(GrenadeItems.FLASH_GRENADE);
 			event.accept(GrenadeItems.IGNITE_GRENADE);
+			event.accept(GrenadeItems.FREEZE_GRENADE);
 		}
 
 	}
