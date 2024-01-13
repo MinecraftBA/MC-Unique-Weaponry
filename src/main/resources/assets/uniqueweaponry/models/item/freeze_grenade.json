@@ -1,0 +1,8 @@
+{
+	"parent": "uniqueweaponry:item/base_grenade",
+	"textures": {
+		"1": "uniqueweaponry:item/freeze_grenade_fuse",
+		"2": "uniqueweaponry:item/freeze_grenade_body",
+		"particle": "uniqueweaponry:item/freeze_grenade_body"
+	}
+}
