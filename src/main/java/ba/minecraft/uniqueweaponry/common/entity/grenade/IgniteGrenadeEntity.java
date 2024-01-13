@@ -2,6 +2,7 @@ package ba.minecraft.uniqueweaponry.common.entity.grenade;
 
 import java.util.List;
 
+import ba.minecraft.uniqueweaponry.common.core.UniqueWeaponryModConfig;
 import ba.minecraft.uniqueweaponry.common.entity.GrenadeEntityTypes;
 import ba.minecraft.uniqueweaponry.common.entity.grenade.base.BaseGrenadeEntity;
 import ba.minecraft.uniqueweaponry.common.helpers.ModResourceLocation;
@@ -60,19 +61,14 @@ public class IgniteGrenadeEntity extends BaseGrenadeEntity {
 	protected void onHit(HitResult hitResult) {
 
 		// Make explosion audio/visual effects.
-		explode(SoundEvents.GENERIC_EXPLODE);
+		explode(SoundEvents.FIRECHARGE_USE);
 
 		// Get affected mobs.
 		List<LivingEntity> mobs = getAffectedMobs(hitResult);
 
 		// Iterate through mobs
 		for (LivingEntity mob : mobs) {
-
-			// Create instance of blindness effect.
-			MobEffectInstance effectInstance = new MobEffectInstance(MobEffects.BLINDNESS, 5 * 20);
-
-			// Apply effect to mob.
-			mob.addEffect(effectInstance);
+			mob.setSecondsOnFire(UniqueWeaponryModConfig.IGNITE_GRENADE_SECONDS_DURATION);
 		}
 
 		// Call mandatory base class code.
