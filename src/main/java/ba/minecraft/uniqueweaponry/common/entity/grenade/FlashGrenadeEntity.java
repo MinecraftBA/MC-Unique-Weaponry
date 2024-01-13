@@ -2,6 +2,7 @@ package ba.minecraft.uniqueweaponry.common.entity.grenade;
 
 import java.util.List;
 
+import ba.minecraft.uniqueweaponry.common.core.UniqueWeaponryModConfig;
 import ba.minecraft.uniqueweaponry.common.entity.GrenadeEntityTypes;
 import ba.minecraft.uniqueweaponry.common.entity.grenade.base.BaseGrenadeEntity;
 import ba.minecraft.uniqueweaponry.common.helpers.ModResourceLocation;
@@ -74,7 +75,7 @@ public class FlashGrenadeEntity extends BaseGrenadeEntity {
 		for (LivingEntity mob : mobs) {
 
 			// Create instance of blindness effect.
-			MobEffectInstance effectInstance = new MobEffectInstance(MobEffects.BLINDNESS, 5 * 20);
+			MobEffectInstance effectInstance = new MobEffectInstance(MobEffects.BLINDNESS, UniqueWeaponryModConfig.FLASH_GRENADE_SECONDS_DURATION * 20);
 
 			// Apply effect to mob.
 			mob.addEffect(effectInstance);

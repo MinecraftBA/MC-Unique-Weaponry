@@ -2,6 +2,7 @@ package ba.minecraft.uniqueweaponry.common.entity.grenade;
 
 import java.util.List;
 
+import ba.minecraft.uniqueweaponry.common.core.UniqueWeaponryModConfig;
 import ba.minecraft.uniqueweaponry.common.entity.GrenadeEntityTypes;
 import ba.minecraft.uniqueweaponry.common.entity.grenade.base.BaseGrenadeEntity;
 import ba.minecraft.uniqueweaponry.common.helpers.ModResourceLocation;
@@ -20,7 +21,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.HitResult;
 
 public class FreezeGrenadeEntity  extends BaseGrenadeEntity {
@@ -78,23 +78,34 @@ public class FreezeGrenadeEntity  extends BaseGrenadeEntity {
 		for (LivingEntity mob : mobs) {
 			
 			// Create instance of dig slowdown effect.
-			MobEffectInstance digSlowdownEffectInstance = new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 30 * 20, 255);
+			MobEffectInstance digSlowdownEffectInstance = new MobEffectInstance(MobEffects.DIG_SLOWDOWN, UniqueWeaponryModConfig.FREEZE_GRENADE_SECONDS_DURATION * 20, 255);
 
 			// Apply effect to mob.
 			mob.addEffect(digSlowdownEffectInstance);
 
 			// Create instance of movement slowdown effect.
-			MobEffectInstance movementSlowdownEffectInstance = new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 30 * 20, 255);
+			MobEffectInstance movementSlowdownEffectInstance = new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, UniqueWeaponryModConfig.FREEZE_GRENADE_SECONDS_DURATION * 20, 255);
 
 			// Apply effect to mob.
 			mob.addEffect(movementSlowdownEffectInstance);
 			
+			// Get mob standing block position.
 			BlockPos position = mob.blockPosition();
 			
-			this.level().setBlock(position, Blocks.POWDER_SNOW.defaultBlockState(), Block.UPDATE_ALL);
+			// Get reference to current level.
+			Level level = this.level();
+			
+			// Get height of mob.
+			float height = mob.getBbHeight();
+			
+			// Iterate through all blocks that mob is taking.
+			for(int i = 0; i < height; i++) {
 
-			this.level().setBlock(position.above(), Blocks.POWDER_SNOW.defaultBlockState(), Block.UPDATE_ALL);
-}
+				// Set powder snow on blocks.
+				level.setBlock(position.above(i), Blocks.POWDER_SNOW.defaultBlockState(), Block.UPDATE_ALL);
+			}
+			
+		}
 
 		// Call mandatory base class code.
 		super.onHit(hitResult);

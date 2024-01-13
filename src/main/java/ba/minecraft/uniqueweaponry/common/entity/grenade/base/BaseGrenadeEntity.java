@@ -61,11 +61,8 @@ public abstract class BaseGrenadeEntity extends ThrowableItemProjectile {
 		// Get blast radius.
 		int radius = getBlastRadius();
 
-		// Set center of area to be 7 steps above so that bottom of area is exactly where grenade hit.
-		Vec3 areaCenter = hitLocation.add(0, radius/2, 0);
-		
 		// Create boundaries of blast area.
-		AABB area = AABB.ofSize(areaCenter, radius, radius, radius);
+		AABB area = AABB.ofSize(hitLocation, radius, radius, radius);
 		
 		return area;
 	}

@@ -13,29 +13,27 @@ public class UniqueWeaponryModConfig
     static final ForgeConfigSpec SPEC;
     
     private static final ForgeConfigSpec.IntValue FLASH_GRENADE_SECONDS_DURATION_CONFIG;
-    private static final ForgeConfigSpec.IntValue IGNITE_GRENADE_SECONDS_DURATION_CONFIG;
     private static final ForgeConfigSpec.IntValue FREEZE_GRENADE_SECONDS_DURATION_CONFIG;
+    private static final ForgeConfigSpec.IntValue IGNITE_GRENADE_SECONDS_DURATION_CONFIG;
    
-    
-    public static int IGNITE_GRENADE_SECONDS_DURATION;
-    
     public static int FLASH_GRENADE_SECONDS_DURATION;
-    
     public static int FREEZE_GRENADE_SECONDS_DURATION;
+    public static int IGNITE_GRENADE_SECONDS_DURATION;
 
-    static {
+    static 
+    {
     	BUILDER.push("Configs for Unique Weaponry Mod");
 
     	BUILDER.pop();
+
+    	FLASH_GRENADE_SECONDS_DURATION_CONFIG = BUILDER.comment("Defines for how many seconds will the mobs be flashed")
+	            .defineInRange("Flash Grenade effects duration in seconds", 0, 6, 60);
     	
-    	IGNITE_GRENADE_SECONDS_DURATION_CONFIG = BUILDER.comment("Defines how many seconds the player will be on fire")
-	            .defineInRange("Ignite Grenade Seconds Duration", 0, 5, 20);
-    	
-    	FLASH_GRENADE_SECONDS_DURATION_CONFIG = BUILDER.comment("Defines how many seconds the player will be blind")
-	            .defineInRange("Flash Grenade Seconds Duration", 0, 5, 20);
-    	
-    	FREEZE_GRENADE_SECONDS_DURATION_CONFIG = BUILDER.comment("Defines how many seconds the player will be freeze")
-	            .defineInRange("Freeze Grenade Seconds Duration", 0, 30, 60);
+    	FREEZE_GRENADE_SECONDS_DURATION_CONFIG = BUILDER.comment("Defines for how many seconds will the mobs be frozen")
+	            .defineInRange("Freeze Grenade effects duration in seconds", 0, 30, 60);
+
+    	IGNITE_GRENADE_SECONDS_DURATION_CONFIG = BUILDER.comment("Defines for how many seconds will the mobs be ignited")
+	            .defineInRange("Ignite Grenade Seconds Duration", 0, 6, 60);
     	
     	SPEC = BUILDER.build();
     }
@@ -43,11 +41,8 @@ public class UniqueWeaponryModConfig
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event)
     {
-    	
-    	IGNITE_GRENADE_SECONDS_DURATION = IGNITE_GRENADE_SECONDS_DURATION_CONFIG.get();
-    	
-    	FREEZE_GRENADE_SECONDS_DURATION = FREEZE_GRENADE_SECONDS_DURATION_CONFIG.get();
-    	
     	FLASH_GRENADE_SECONDS_DURATION = FLASH_GRENADE_SECONDS_DURATION_CONFIG.get();
+    	FREEZE_GRENADE_SECONDS_DURATION = FREEZE_GRENADE_SECONDS_DURATION_CONFIG.get();
+    	IGNITE_GRENADE_SECONDS_DURATION = IGNITE_GRENADE_SECONDS_DURATION_CONFIG.get();
     }
 }
