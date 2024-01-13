@@ -2,6 +2,7 @@ package ba.minecraft.uniqueweaponry.common.entity.grenade;
 
 import java.util.List;
 
+import ba.minecraft.uniqueweaponry.common.core.UniqueWeaponryModConfig;
 import ba.minecraft.uniqueweaponry.common.entity.GrenadeEntityTypes;
 import ba.minecraft.uniqueweaponry.common.entity.grenade.base.BaseGrenadeEntity;
 import ba.minecraft.uniqueweaponry.common.helpers.ModResourceLocation;
@@ -67,7 +68,7 @@ public class IgniteGrenadeEntity extends BaseGrenadeEntity {
 
 		// Iterate through mobs
 		for (LivingEntity mob : mobs) {
-			mob.setSecondsOnFire(3);
+			mob.setSecondsOnFire(UniqueWeaponryModConfig.IGNITE_GRENADE_SECONDS_DURATION);
 		}
 
 		// Call mandatory base class code.
