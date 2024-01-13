@@ -57,6 +57,11 @@ public class FlashGrenadeEntity extends BaseGrenadeEntity {
 	}
 
 	@Override
+	protected int getBlastRadius() {
+		return 16;
+	}
+
+	@Override
 	protected void onHit(HitResult hitResult) {
 
 		// Make explosion audio/visual effects.

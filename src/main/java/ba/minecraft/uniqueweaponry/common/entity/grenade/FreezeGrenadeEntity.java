@@ -6,6 +6,7 @@ import ba.minecraft.uniqueweaponry.common.entity.GrenadeEntityTypes;
 import ba.minecraft.uniqueweaponry.common.entity.grenade.base.BaseGrenadeEntity;
 import ba.minecraft.uniqueweaponry.common.helpers.ModResourceLocation;
 import ba.minecraft.uniqueweaponry.common.item.GrenadeItems;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -17,6 +18,9 @@ import net.minecraft.world.entity.EntityType.Builder;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.HitResult;
 
 public class FreezeGrenadeEntity  extends BaseGrenadeEntity {
@@ -55,6 +59,11 @@ public class FreezeGrenadeEntity  extends BaseGrenadeEntity {
 	protected Item getDefaultItem() {
 		return GrenadeItems.FREEZE_GRENADE.get();
 	}
+	
+	@Override
+	protected int getBlastRadius() {
+		return 8;
+	}
 
 	@Override
 	protected void onHit(HitResult hitResult) {
@@ -62,17 +71,17 @@ public class FreezeGrenadeEntity  extends BaseGrenadeEntity {
 		// Make explosion audio/visual effects.
 		explode(SoundEvents.GENERIC_EXPLODE);
 
-		// Get affected mobs.
-		List<LivingEntity> mobs = getAffectedMobs(hitResult);
-
-		// Iterate through mobs
-		for (LivingEntity mob : mobs) {
-
-			// Create instance of blindness effect.
-			MobEffectInstance effectInstance = new MobEffectInstance(MobEffects.BLINDNESS, 5 * 20);
-
-			// Apply effect to mob.
-			mob.addEffect(effectInstance);
+		// Get list of block positions for air in affected area.
+		List<BlockPos> airPositions = getAffectedBlockPositions(hitResult, Blocks.AIR);
+		
+		// Iterate through all positions.
+		for(BlockPos position : airPositions) {
+			
+			// Get reference to level.
+			Level level = this.level();
+			
+			// Set powder snow instead of air.
+			level.setBlock(position, Blocks.POWDER_SNOW.defaultBlockState(), Block.UPDATE_ALL);
 		}
 
 		// Call mandatory base class code.
