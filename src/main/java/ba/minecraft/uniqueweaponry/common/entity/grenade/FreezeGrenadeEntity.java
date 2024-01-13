@@ -62,27 +62,39 @@ public class FreezeGrenadeEntity  extends BaseGrenadeEntity {
 	
 	@Override
 	protected int getBlastRadius() {
-		return 8;
+		return 16;
 	}
 
 	@Override
 	protected void onHit(HitResult hitResult) {
 
 		// Make explosion audio/visual effects.
-		explode(SoundEvents.GENERIC_EXPLODE);
+		explode(SoundEvents.SNOW_PLACE);
 
-		// Get list of block positions for air in affected area.
-		List<BlockPos> airPositions = getAffectedBlockPositions(hitResult, Blocks.AIR);
-		
-		// Iterate through all positions.
-		for(BlockPos position : airPositions) {
+		// Get affected mobs.
+		List<LivingEntity> mobs = getAffectedMobs(hitResult);
+
+		// Iterate through mobs
+		for (LivingEntity mob : mobs) {
 			
-			// Get reference to level.
-			Level level = this.level();
+			// Create instance of dig slowdown effect.
+			MobEffectInstance digSlowdownEffectInstance = new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 30 * 20, 255);
+
+			// Apply effect to mob.
+			mob.addEffect(digSlowdownEffectInstance);
+
+			// Create instance of movement slowdown effect.
+			MobEffectInstance movementSlowdownEffectInstance = new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 30 * 20, 255);
+
+			// Apply effect to mob.
+			mob.addEffect(movementSlowdownEffectInstance);
 			
-			// Set powder snow instead of air.
-			level.setBlock(position, Blocks.POWDER_SNOW.defaultBlockState(), Block.UPDATE_ALL);
-		}
+			BlockPos position = mob.blockPosition();
+			
+			this.level().setBlock(position, Blocks.POWDER_SNOW.defaultBlockState(), Block.UPDATE_ALL);
+
+			this.level().setBlock(position.above(), Blocks.POWDER_SNOW.defaultBlockState(), Block.UPDATE_ALL);
+}
 
 		// Call mandatory base class code.
 		super.onHit(hitResult);
