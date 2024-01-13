@@ -27,13 +27,13 @@ public class UniqueWeaponryModConfig
     	BUILDER.pop();
 
     	FLASH_GRENADE_SECONDS_DURATION_CONFIG = BUILDER.comment("Defines for how many seconds will the mobs be flashed")
-	            .defineInRange("Flash Grenade effects duration in seconds", 0, 6, 60);
+	            .defineInRange("Flash Grenade duration", 0, 6, 60);
     	
     	FREEZE_GRENADE_SECONDS_DURATION_CONFIG = BUILDER.comment("Defines for how many seconds will the mobs be frozen")
-	            .defineInRange("Freeze Grenade effects duration in seconds", 0, 30, 60);
+	            .defineInRange("Freeze Grenade duration", 0, 30, 60);
 
     	IGNITE_GRENADE_SECONDS_DURATION_CONFIG = BUILDER.comment("Defines for how many seconds will the mobs be ignited")
-	            .defineInRange("Ignite Grenade Seconds Duration", 0, 6, 60);
+	            .defineInRange("Ignite Grenade duration", 0, 6, 60);
     	
     	SPEC = BUILDER.build();
     }
