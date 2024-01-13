@@ -60,19 +60,14 @@ public class IgniteGrenadeEntity extends BaseGrenadeEntity {
 	protected void onHit(HitResult hitResult) {
 
 		// Make explosion audio/visual effects.
-		explode(SoundEvents.GENERIC_EXPLODE);
+		explode(SoundEvents.FIRECHARGE_USE);
 
 		// Get affected mobs.
 		List<LivingEntity> mobs = getAffectedMobs(hitResult);
 
 		// Iterate through mobs
 		for (LivingEntity mob : mobs) {
-
-			// Create instance of blindness effect.
-			MobEffectInstance effectInstance = new MobEffectInstance(MobEffects.BLINDNESS, 5 * 20);
-
-			// Apply effect to mob.
-			mob.addEffect(effectInstance);
+			mob.setSecondsOnFire(3);
 		}
 
 		// Call mandatory base class code.
