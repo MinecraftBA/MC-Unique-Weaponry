@@ -19,7 +19,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
 
-public final class FreezeGrenadeEntity  extends BaseGrenadeEntity {
+public class FreezeGrenadeEntity  extends BaseGrenadeEntity {
 
 	// Defines that this entity will be registered as experimentalmod:rpg
 	private static final ResourceLocation ENTITY_LOC = new ModResourceLocation("freeze_grenade");

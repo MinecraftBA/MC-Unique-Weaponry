@@ -14,13 +14,15 @@ public final class EnUsLanguageProvider extends LanguageProvider {
 
 	@Override
 	protected void addTranslations() {
+
 		addGrenadeItems();
-		
 		addGrenadeEntities();
+		
 	}
 
 	private void addGrenadeItems() {
 		add(GrenadeItems.FLASH_GRENADE.get(), "Flash Grenade");
+		add(GrenadeItems.IGNITE_GRENADE.get(), "Ignite Grenade");
 		add(GrenadeItems.FREEZE_GRENADE.get(), "Freeze Grenade");
 	}
 	

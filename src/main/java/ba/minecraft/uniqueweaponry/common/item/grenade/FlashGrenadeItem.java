@@ -5,7 +5,7 @@ import ba.minecraft.uniqueweaponry.common.item.grenade.base.BaseGrenadeItem;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 
-public final class FlashGrenadeItem extends BaseGrenadeItem<FlashGrenadeEntity> {
+public class FlashGrenadeItem extends BaseGrenadeItem<FlashGrenadeEntity> {
 
 	@Override
 	public FlashGrenadeEntity CreateEntity(Level level, LivingEntity thrower) {

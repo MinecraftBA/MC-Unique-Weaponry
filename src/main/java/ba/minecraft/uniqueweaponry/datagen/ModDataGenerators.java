@@ -1,7 +1,6 @@
 package ba.minecraft.uniqueweaponry.datagen;
 
 import net.minecraft.data.DataGenerator;
-import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -20,7 +19,7 @@ public final class ModDataGenerators {
 		DataGenerator dataGen = event.getGenerator();
 		
 		// Get reference to existing file helper.
-		ExistingFileHelper exFileHelper = event.getExistingFileHelper();
+		//ExistingFileHelper exFileHelper = event.getExistingFileHelper();
 		
 		// Registration of recipes provided by mod
 		dataGen.addProvider(event.includeServer(), new GrenadeItemRecipeProvider(dataGen));

@@ -27,10 +27,10 @@ public final class GrenadeItemRecipeProvider extends RecipeProvider {
 	    	.pattern(" R ")
 	    	.pattern("IDI")
 	    	.pattern(" G ")
-	    	.unlockedBy(getHasName(Items.GUNPOWDER), has(Items.GUNPOWDER))
+	    	.unlockedBy(getHasName(Items.GLOWSTONE_DUST), has(Items.GLOWSTONE_DUST))
 	    	.save(consumer);
 		
-			ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GrenadeItems.IGNITE_GRENADE.get(), 1)
+		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GrenadeItems.IGNITE_GRENADE.get(), 1)
 	    	.define('F', Items.FIRE_CHARGE)
 	    	.define('G', Items.GUNPOWDER)
 	    	.define('R', Items.REDSTONE)
@@ -38,18 +38,18 @@ public final class GrenadeItemRecipeProvider extends RecipeProvider {
 	    	.pattern(" R ")
 	    	.pattern("IFI")
 	    	.pattern(" G ")
-	    	.unlockedBy(getHasName(Items.GUNPOWDER), has(Items.GUNPOWDER))
+	    	.unlockedBy(getHasName(Items.FIRE_CHARGE), has(Items.FIRE_CHARGE))
 	    	.save(consumer);
 			
-			ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GrenadeItems.FREEZE_GRENADE.get(), 1)
-	    	.define('G', Items.IRON_INGOT)
-	    	.define('P', Items.PACKED_ICE)
-	    	.define('B', Items.BLUE_ICE)
-	    	.define('I', Items.ICE)
-	    	.pattern(" P ")
-	    	.pattern("GBG")
-	    	.pattern(" I ")
-	    	.unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
+		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GrenadeItems.FREEZE_GRENADE.get(), 1)
+	    	.define('C', Items.ICE)
+	    	.define('G', Items.GUNPOWDER)
+	    	.define('R', Items.REDSTONE)
+	    	.define('I', Items.IRON_INGOT)
+	    	.pattern(" R ")
+	    	.pattern("ICI")
+	    	.pattern(" G ")
+	    	.unlockedBy(getHasName(Items.ICE), has(Items.ICE))
 	    	.save(consumer);
 		
 	}
