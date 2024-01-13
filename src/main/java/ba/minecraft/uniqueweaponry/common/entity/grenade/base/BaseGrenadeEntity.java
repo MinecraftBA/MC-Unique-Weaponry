@@ -2,7 +2,6 @@ package ba.minecraft.uniqueweaponry.common.entity.grenade.base;
 
 import java.util.List;
 
-import ba.minecraft.uniqueweaponry.common.entity.grenade.FlashGrenadeEntity;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.EntityType;
@@ -20,7 +19,7 @@ public abstract class BaseGrenadeEntity extends ThrowableItemProjectile {
 		super(entityType, level);
 	}
 
-	public BaseGrenadeEntity(EntityType<FlashGrenadeEntity> entityType, LivingEntity pShooter, Level pLevel) {
+	public BaseGrenadeEntity(EntityType<? extends ThrowableItemProjectile> entityType, LivingEntity pShooter, Level pLevel) {
 		super(entityType, pShooter, pLevel);
 	}
 
