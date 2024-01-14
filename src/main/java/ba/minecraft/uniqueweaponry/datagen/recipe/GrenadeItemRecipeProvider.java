@@ -1,8 +1,10 @@
 package ba.minecraft.uniqueweaponry.datagen.recipe;
 
+import java.util.function.Consumer;
+
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.world.item.Items;
@@ -15,7 +17,7 @@ public final class GrenadeItemRecipeProvider extends RecipeProvider {
 	}
 	
 	@Override
-	protected void buildRecipes(RecipeOutput recipeOutput) {
+	protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GrenadeItems.FLASH_GRENADE.get(), 1)
 	    	.define('D', Items.GLOWSTONE_DUST)
@@ -26,8 +28,8 @@ public final class GrenadeItemRecipeProvider extends RecipeProvider {
 	    	.pattern("IDI")
 	    	.pattern(" G ")
 	    	.unlockedBy(getHasName(Items.GLOWSTONE_DUST), has(Items.GLOWSTONE_DUST))
-	    	.save(recipeOutput);
-	
+	    	.save(consumer);
+		
 		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GrenadeItems.IGNITE_GRENADE.get(), 1)
 	    	.define('F', Items.FIRE_CHARGE)
 	    	.define('G', Items.GUNPOWDER)
@@ -37,8 +39,8 @@ public final class GrenadeItemRecipeProvider extends RecipeProvider {
 	    	.pattern("IFI")
 	    	.pattern(" G ")
 	    	.unlockedBy(getHasName(Items.FIRE_CHARGE), has(Items.FIRE_CHARGE))
-	    	.save(recipeOutput);
-		
+	    	.save(consumer);
+			
 		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GrenadeItems.FREEZE_GRENADE.get(), 1)
 	    	.define('C', Items.ICE)
 	    	.define('G', Items.GUNPOWDER)
@@ -48,8 +50,8 @@ public final class GrenadeItemRecipeProvider extends RecipeProvider {
 	    	.pattern("ICI")
 	    	.pattern(" G ")
 	    	.unlockedBy(getHasName(Items.ICE), has(Items.ICE))
-	    	.save(recipeOutput);
-
+	    	.save(consumer);
+		
 	}
 	
 }
