@@ -59,7 +59,7 @@ public class FlashGrenadeEntity extends BaseGrenadeEntity {
 
 	@Override
 	protected int getBlastRadius() {
-		return 16;
+		return UniqueWeaponryModConfig.FLASH_GRENADE_BLAST_RADIUS;
 	}
 
 	@Override

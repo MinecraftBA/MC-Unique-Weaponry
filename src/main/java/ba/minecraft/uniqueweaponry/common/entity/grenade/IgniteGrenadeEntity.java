@@ -57,7 +57,7 @@ public class IgniteGrenadeEntity extends BaseGrenadeEntity {
 	
 	@Override
 	protected int getBlastRadius() {
-		return 16;
+		return UniqueWeaponryModConfig.IGNITE_GRENADE_BLAST_RADIUS;
 	}
 
 	@Override

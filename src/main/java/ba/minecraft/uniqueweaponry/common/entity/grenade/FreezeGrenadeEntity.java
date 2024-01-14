@@ -62,7 +62,7 @@ public class FreezeGrenadeEntity  extends BaseGrenadeEntity {
 	
 	@Override
 	protected int getBlastRadius() {
-		return 16;
+		return UniqueWeaponryModConfig.FREEZE_GRENADE_BLAST_RADIUS;
 	}
 
 	@Override
