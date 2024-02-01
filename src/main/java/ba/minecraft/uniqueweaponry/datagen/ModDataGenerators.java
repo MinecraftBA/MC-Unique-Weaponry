@@ -23,7 +23,7 @@ public final class ModDataGenerators {
 		
 		// Registration of recipes provided by mod
 		dataGen.addProvider(event.includeServer(), new GrenadeItemRecipeProvider(dataGen));
-
+		dataGen.addProvider(event.includeServer(), new GunItemRecipeProvider(dataGen));
 		// Item model providers
 		//dataGen.addProvider(event.includeClient(), new GrenadeItemModelProvider(dataGen, exFileHelper));
 		
