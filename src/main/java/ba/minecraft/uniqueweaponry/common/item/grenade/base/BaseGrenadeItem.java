@@ -27,6 +27,7 @@ public abstract class BaseGrenadeItem<T extends BaseGrenadeEntity> extends Item 
 	public abstract T CreateEntity(Level level, LivingEntity thrower);
 
 	@Override
+	
 	public InteractionResultHolder<ItemStack> use(Level level, Player thrower, InteractionHand usedHand) {
 	    
 		// Get reference to grenade held in hand.
@@ -44,7 +45,8 @@ public abstract class BaseGrenadeItem<T extends BaseGrenadeEntity> extends Item 
 			// Set grenade item that is being thrown.
 			grenade.setItem(itemstack);
 			
-			// Shoot granade.
+			
+			// Shoot grenade.
 			grenade.shootFromRotation(thrower, thrower.getXRot(), thrower.getYRot(), 0.0F, 1.5F, 1.0F);
           	  
 			// Add it to the level.
