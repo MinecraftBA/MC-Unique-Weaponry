@@ -1,20 +1,32 @@
 package ba.minecraft.uniqueweaponry.common.entity.projectile;
 
+import java.util.List;
+
+import ba.minecraft.uniqueweaponry.common.core.UniqueWeaponryModConfig;
 import ba.minecraft.uniqueweaponry.common.entity.ProjectileEntityTypes;
 import ba.minecraft.uniqueweaponry.common.entity.projectile.CobwebProjectileEntity;
 import ba.minecraft.uniqueweaponry.common.helpers.ModResourceLocation;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.EntityType.Builder;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
 
 public class CobwebProjectileEntity extends ThrowableItemProjectile{
 	
-	private static final ResourceLocation ENTITY_LOC = new ModResourceLocation("cobweb");
+	private static final ResourceLocation ENTITY_LOC = new ResourceLocation("cobweb");
 	
 	public static EntityType<CobwebProjectileEntity> createType() {
 
@@ -42,11 +54,40 @@ public class CobwebProjectileEntity extends ThrowableItemProjectile{
 	public CobwebProjectileEntity(Level level) {
 		super(ProjectileEntityTypes.COBWEB.get(), level);
 	}
+	
+	@Override
+	protected Item getDefaultItem() { 
+		return Items.COBWEB;
+	}
+	
+	protected int getBlastRadius() {
+		return UniqueWeaponryModConfig.FREEZE_GRENADE_BLAST_RADIUS;
+	}
 
 	@Override
-	protected Item getDefaultItem() {
-		// TODO Auto-generated method stub
-		return null;
+	protected void onHit(HitResult hitResult) {
+
+
+			// Get mob standing block position.
+			Vec3 position = hitResult.getLocation();
+			
+			BlockPos blockPos = new BlockPos((int)position.x, (int)position.y, (int)position.z);
+			
+			// Get reference to current level.
+			Level level = this.level();
+			
+
+				// Set powder snow on blocks.
+				level.setBlock(blockPos, Blocks.COBWEB.defaultBlockState(), Block.UPDATE_ALL);
+			
+			
+		
+
+		// Call mandatory base class code.
+		super.onHit(hitResult);
+
 	}
+
+	
 
 }
