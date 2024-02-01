@@ -1,9 +1,11 @@
 package ba.minecraft.uniqueweaponry.common.entity.projectile;
 
+import ba.minecraft.uniqueweaponry.common.entity.ProjectileEntityTypes;
 import ba.minecraft.uniqueweaponry.common.entity.projectile.CobwebProjectileEntity;
 import ba.minecraft.uniqueweaponry.common.helpers.ModResourceLocation;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.EntityType.Builder;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
@@ -29,10 +31,16 @@ public class CobwebProjectileEntity extends ThrowableItemProjectile{
 		return entityType;
 	}
 	
-	public CobwebProjectileEntity(EntityType<? extends ThrowableItemProjectile> pEntityType, double pX, double pY,
-			double pZ, Level pLevel) {
-		super(pEntityType, pX, pY, pZ, pLevel);
-		// TODO Auto-generated constructor stub
+	public CobwebProjectileEntity(EntityType<? extends ThrowableItemProjectile> entityType, Level level) {
+		super(entityType, level);
+	}
+
+	public CobwebProjectileEntity(Level level, LivingEntity thrower) {
+		super(ProjectileEntityTypes.COBWEB.get(), thrower, level);
+	}
+
+	public CobwebProjectileEntity(Level level) {
+		super(ProjectileEntityTypes.COBWEB.get(), level);
 	}
 
 	@Override
