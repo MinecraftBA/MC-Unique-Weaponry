@@ -1,11 +1,7 @@
 package ba.minecraft.uniqueweaponry.datagen.recipe;
 
-import java.util.function.Consumer;
-
-import ba.minecraft.uniqueweaponry.common.item.GrenadeItems;
 import ba.minecraft.uniqueweaponry.common.item.GunItems;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
