@@ -33,8 +33,14 @@ public class WebberGunItem extends Item {
 
 		boolean hasCobWeb = false;
 		
-		// IF: Shooter is not in creative mode.
-		if (!shooter.getAbilities().instabuild) {
+		// IF: It is creative mode.
+		if(shooter.getAbilities().instabuild) {
+			
+			// Cobweb should not be required.
+			hasCobWeb = true;
+
+		} 
+		else {  // ELSE: It is survival mode.
 
 			// Get reference to shooter inventory.
 			Inventory inventory = shooter.getInventory();
