@@ -1,9 +1,9 @@
 package ba.minecraft.uniqueweaponry.common.entity.projectile;
 
-import ba.minecraft.uniqueweaponry.common.core.UniqueWeaponryModConfig;
 import ba.minecraft.uniqueweaponry.common.entity.ProjectileEntityTypes;
 import ba.minecraft.uniqueweaponry.common.entity.projectile.CobwebProjectileEntity;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -15,6 +15,9 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
@@ -54,34 +57,73 @@ public class CobwebProjectileEntity extends ThrowableItemProjectile{
 		return Items.COBWEB;
 	}
 	
-	protected int getBlastRadius() {
-		return UniqueWeaponryModConfig.FREEZE_GRENADE_BLAST_RADIUS;
+	
+	
+	@Override
+	protected void onHitEntity(EntityHitResult pResult) {
+		// TODO Auto-generated method stub
+		super.onHitEntity(pResult);
 	}
 
 	@Override
-	protected void onHit(HitResult hitResult) {
-
-
-			// Get mob standing block position.
-			Vec3 position = hitResult.getLocation();
-			
-			BlockPos blockPos = new BlockPos((int)position.x, (int)position.y, (int)position.z);
-			
-			// Get reference to current level.
-			Level level = this.level();
-			
-
-				// Set powder snow on blocks.
-				level.setBlock(blockPos, Blocks.COBWEB.defaultBlockState(), Block.UPDATE_ALL);
-			
-			
+	protected void onHitBlock(BlockHitResult hitResult) {
 		
+		// Get reference to current level.
+		Level level = this.level();
+
+		// IF: Code is executing on client side.
+		if(level.isClientSide())
+		{
+			// Do nothing.
+			return;
+		}
+
+		// Get position of hit block.
+		BlockPos blockPos = hitResult.getBlockPos();
+
+		// Get direction in which block was hit.
+		Direction direction = hitResult.getDirection();
+		
+		// Position where cobweb should be spawned.
+		BlockPos spawnBlockPos = null;
+		
+		switch(direction)
+		{
+			case WEST:
+				spawnBlockPos = blockPos.west();
+			break;
+			case EAST:
+				spawnBlockPos = blockPos.east();
+				break;
+			case UP:
+				spawnBlockPos = blockPos.above();
+				break;
+			case DOWN:
+				spawnBlockPos = blockPos.below();
+				break;
+			case NORTH:
+				spawnBlockPos = blockPos.north();
+				break;
+			case SOUTH:
+				spawnBlockPos = blockPos.south();
+				break;
+		}
+		
+		// Get information about block at expected spawn location.
+		BlockState block = level.getBlockState(spawnBlockPos);
+		
+		// IF: Above position is taken by some other non-air block.
+		if(!block.isAir()){
+			
+			// Do nothing.
+			return;
+		}
+		
+		// Spawn cobweb on block above hit block.
+		level.setBlock(spawnBlockPos, Blocks.COBWEB.defaultBlockState(), Block.UPDATE_ALL);
 
 		// Call mandatory base class code.
 		super.onHit(hitResult);
-
 	}
-
-	
 
 }
