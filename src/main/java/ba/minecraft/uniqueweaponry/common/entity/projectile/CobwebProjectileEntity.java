@@ -5,6 +5,7 @@ import ba.minecraft.uniqueweaponry.common.entity.projectile.CobwebProjectileEnti
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobCategory;
@@ -18,8 +19,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
 
 public class CobwebProjectileEntity extends ThrowableItemProjectile{
 	
@@ -57,12 +56,45 @@ public class CobwebProjectileEntity extends ThrowableItemProjectile{
 		return Items.COBWEB;
 	}
 	
-	
-	
 	@Override
-	protected void onHitEntity(EntityHitResult pResult) {
-		// TODO Auto-generated method stub
-		super.onHitEntity(pResult);
+	protected void onHitEntity(EntityHitResult hitResult) {
+
+		// Get reference to current level.
+		Level level = this.level();
+
+		// IF: Code is executing on client side.
+		if(level.isClientSide()) {
+			// Do nothing.
+			return;
+		}
+		
+		// Get target that was hit.
+		Entity target = hitResult.getEntity();
+		
+		// IF: Target is not a living entity.
+		if(!(target instanceof LivingEntity)) {
+			
+			// Do nothing.
+			return;
+		}
+		
+		// Get block position of target.
+		BlockPos position = target.blockPosition();
+		
+		// Get information about block at expected spawn location.
+		BlockState block = level.getBlockState(position);
+		
+		// IF: Above position is taken by some other non-air block.
+		if(!block.isAir()){
+			
+			// Do nothing.
+			return;
+		}
+		
+		// Spawn cobweb on block above hit block.
+		level.setBlock(position, Blocks.COBWEB.defaultBlockState(), Block.UPDATE_ALL);
+
+		super.onHitEntity(hitResult);
 	}
 
 	@Override
@@ -72,8 +104,7 @@ public class CobwebProjectileEntity extends ThrowableItemProjectile{
 		Level level = this.level();
 
 		// IF: Code is executing on client side.
-		if(level.isClientSide())
-		{
+		if(level.isClientSide()) {
 			// Do nothing.
 			return;
 		}
@@ -94,19 +125,19 @@ public class CobwebProjectileEntity extends ThrowableItemProjectile{
 			break;
 			case EAST:
 				spawnBlockPos = blockPos.east();
-				break;
+			break;
 			case UP:
 				spawnBlockPos = blockPos.above();
-				break;
+			break;
 			case DOWN:
 				spawnBlockPos = blockPos.below();
-				break;
+			break;
 			case NORTH:
 				spawnBlockPos = blockPos.north();
-				break;
+			break;
 			case SOUTH:
 				spawnBlockPos = blockPos.south();
-				break;
+			break;
 		}
 		
 		// Get information about block at expected spawn location.
@@ -123,7 +154,7 @@ public class CobwebProjectileEntity extends ThrowableItemProjectile{
 		level.setBlock(spawnBlockPos, Blocks.COBWEB.defaultBlockState(), Block.UPDATE_ALL);
 
 		// Call mandatory base class code.
-		super.onHit(hitResult);
+		super.onHitBlock(hitResult);
 	}
 
 }
