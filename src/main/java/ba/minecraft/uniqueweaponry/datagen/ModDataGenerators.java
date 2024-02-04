@@ -22,10 +22,7 @@ public final class ModDataGenerators {
 		//ExistingFileHelper exFileHelper = event.getExistingFileHelper();
 		
 		// Registration of recipes provided by mod
-		dataGen.addProvider(event.includeServer(), new GrenadeItemRecipeProvider(dataGen));
-
-		// Item model providers
-		//dataGen.addProvider(event.includeClient(), new GrenadeItemModelProvider(dataGen, exFileHelper));
+		dataGen.addProvider(event.includeServer(), new ModItemRecipeProvider(dataGen));
 		
 		// Language providers
 		dataGen.addProvider(event.includeClient(), new EnUsLanguageProvider(dataGen));

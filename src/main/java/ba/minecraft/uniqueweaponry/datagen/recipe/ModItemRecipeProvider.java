@@ -7,10 +7,11 @@ import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.world.item.Items;
 import ba.minecraft.uniqueweaponry.common.item.GrenadeItems;
+import ba.minecraft.uniqueweaponry.common.item.GunItems;
 
-public final class GrenadeItemRecipeProvider extends RecipeProvider {
+public final class ModItemRecipeProvider extends RecipeProvider {
 	
-	public GrenadeItemRecipeProvider(DataGenerator dataGen) {
+	public ModItemRecipeProvider(DataGenerator dataGen) {
 		super(dataGen.getPackOutput());
 	}
 	
@@ -50,6 +51,16 @@ public final class GrenadeItemRecipeProvider extends RecipeProvider {
 	    	.unlockedBy(getHasName(Items.ICE), has(Items.ICE))
 	    	.save(recipeOutput);
 
+		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GunItems.WEBBER.get(), 1)
+	    	.define('S', Items.STRING)
+	    	.define('G', Items.GUNPOWDER)
+	    	.define('R', Items.REDSTONE)
+	    	.define('I', Items.IRON_INGOT)
+	    	.pattern(" R ")
+	    	.pattern("SGS")
+	    	.pattern(" I ")
+	    	.unlockedBy(getHasName(Items.STRING), has(Items.STRING))
+	    	.save(recipeOutput);
 	}
 	
 }
