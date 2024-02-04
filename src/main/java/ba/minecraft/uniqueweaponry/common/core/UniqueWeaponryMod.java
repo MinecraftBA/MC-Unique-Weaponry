@@ -3,7 +3,9 @@ package ba.minecraft.uniqueweaponry.common.core;
 import com.mojang.logging.LogUtils;
 
 import ba.minecraft.uniqueweaponry.common.entity.GrenadeEntityTypes;
+import ba.minecraft.uniqueweaponry.common.entity.ProjectileEntityTypes;
 import ba.minecraft.uniqueweaponry.common.item.GrenadeItems;
+import ba.minecraft.uniqueweaponry.common.item.GunItems;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartedEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -32,9 +34,11 @@ public class UniqueWeaponryMod
 
         // Registration of mod provided items.
         GrenadeItems.REGISTRY.register(modEventBus);
+        GunItems.REGISTRY.register(modEventBus);
         
         // Registration of mod provided entity types
     	GrenadeEntityTypes.REGISTRY.register(modEventBus);
+    	ProjectileEntityTypes.REGISTRY.register(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);

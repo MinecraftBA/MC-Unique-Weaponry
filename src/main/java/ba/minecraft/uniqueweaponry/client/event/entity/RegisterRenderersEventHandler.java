@@ -1,6 +1,7 @@
 package ba.minecraft.uniqueweaponry.client.event.entity;
 
 import ba.minecraft.uniqueweaponry.common.entity.GrenadeEntityTypes;
+import ba.minecraft.uniqueweaponry.common.entity.ProjectileEntityTypes;
 import ba.minecraft.uniqueweaponry.common.core.UniqueWeaponryMod;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraftforge.api.distmarker.Dist;
@@ -18,6 +19,7 @@ public final class RegisterRenderersEventHandler {
 		event.registerEntityRenderer(GrenadeEntityTypes.FLASH_GRENADE.get(), ThrownItemRenderer::new);
 		event.registerEntityRenderer(GrenadeEntityTypes.FREEZE_GRENADE.get(), ThrownItemRenderer::new);
 		event.registerEntityRenderer(GrenadeEntityTypes.IGNITE_GRENADE.get(), ThrownItemRenderer::new);
+		event.registerEntityRenderer(ProjectileEntityTypes.COBWEB.get(), ThrownItemRenderer::new);
 		
 	}
 	
