@@ -7,8 +7,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-public class GunItems {
-	
+public final class GunItems {
 	
 	private GunItems() {}
 	
@@ -17,4 +16,5 @@ public class GunItems {
 	
 	public static final RegistryObject<WebberGunItem> WEBBER = 
 			REGISTRY.register("webber", () -> new WebberGunItem());
+	
 }

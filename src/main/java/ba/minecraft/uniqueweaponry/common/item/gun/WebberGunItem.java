@@ -30,7 +30,7 @@ public class WebberGunItem extends Item {
 		ItemStack itemStack = new ItemStack(Items.COBWEB,1);
 		
 		// Play throwing sound.
-		level.playSound((Player)null, thrower.getX(), thrower.getY(), thrower.getZ(), SoundEvents.TRIDENT_THROW, SoundSource.NEUTRAL, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
+		level.playSound((Player)null, thrower.getX(), thrower.getY(), thrower.getZ(), SoundEvents.FISHING_BOBBER_THROW, SoundSource.NEUTRAL, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
 		
 		// IF: Code is executing on server side.
 		if (!level.isClientSide) {
