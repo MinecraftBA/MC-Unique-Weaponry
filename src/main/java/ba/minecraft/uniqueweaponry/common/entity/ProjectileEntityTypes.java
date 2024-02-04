@@ -1,7 +1,6 @@
 package ba.minecraft.uniqueweaponry.common.entity;
 
 import ba.minecraft.uniqueweaponry.common.core.UniqueWeaponryMod;
-import ba.minecraft.uniqueweaponry.common.entity.grenade.FlashGrenadeEntity;
 import ba.minecraft.uniqueweaponry.common.entity.projectile.CobwebProjectileEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraftforge.registries.DeferredRegister;

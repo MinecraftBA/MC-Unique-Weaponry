@@ -1,16 +1,10 @@
 package ba.minecraft.uniqueweaponry.common.entity.projectile;
 
-import java.util.List;
-
 import ba.minecraft.uniqueweaponry.common.core.UniqueWeaponryModConfig;
 import ba.minecraft.uniqueweaponry.common.entity.ProjectileEntityTypes;
 import ba.minecraft.uniqueweaponry.common.entity.projectile.CobwebProjectileEntity;
-import ba.minecraft.uniqueweaponry.common.helpers.ModResourceLocation;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobCategory;
