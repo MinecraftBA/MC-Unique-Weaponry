@@ -23,49 +23,48 @@ public abstract class BaseGrenadeItem<T extends BaseGrenadeEntity> extends Item 
 		properties.stacksTo(MAX_STACK_SIZE);
 		return properties;
 	}
-	
+
 	public abstract T CreateEntity(Level level, LivingEntity thrower);
 
 	@Override
-	
+
 	public InteractionResultHolder<ItemStack> use(Level level, Player thrower, InteractionHand usedHand) {
-	    
+
 		// Get reference to grenade held in hand.
-		ItemStack itemstack = thrower.getItemInHand(usedHand);
-	      
+		ItemStack itemStack = thrower.getItemInHand(usedHand);
+
 		// Play throwing sound.
-		level.playSound((Player)null, thrower.getX(), thrower.getY(), thrower.getZ(), SoundEvents.TRIDENT_THROW, SoundSource.NEUTRAL, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
+		level.playSound((Player) null, thrower.getX(), thrower.getY(), thrower.getZ(), SoundEvents.TRIDENT_THROW,
+				SoundSource.NEUTRAL, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
 
 		// IF: Code is executing on server side.
 		if (!level.isClientSide) {
 
 			// Create instance of grenade entity.
 			T grenade = CreateEntity(level, thrower);
-	          
+
 			// Set grenade item that is being thrown.
-			grenade.setItem(itemstack);
-			
-			
+			grenade.setItem(itemStack);
+
 			// Shoot grenade.
 			grenade.shootFromRotation(thrower, thrower.getXRot(), thrower.getYRot(), 0.0F, 1.5F, 1.0F);
-          	  
+
 			// Add it to the level.
 			level.addFreshEntity(grenade);
 		}
-	      
+
 		// Award stat that item is used.
 		thrower.awardStat(Stats.ITEM_USED.get(this));
-	      
+
 		// IF: It is not in creative mode.
 		if (!thrower.getAbilities().instabuild) {
-			
+
 			// Reduce quantity in inventory by one.
-			itemstack.shrink(1);
+			itemStack.shrink(1);
 		}
 
 		// Incidate that use was successful.
-		return InteractionResultHolder.sidedSuccess(itemstack, level.isClientSide());
+		return InteractionResultHolder.sidedSuccess(itemStack, level.isClientSide());
 	}
-	
-	
+
 }

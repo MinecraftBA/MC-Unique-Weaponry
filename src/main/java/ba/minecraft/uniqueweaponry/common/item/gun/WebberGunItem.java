@@ -6,9 +6,11 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 
 public class WebberGunItem extends Item {
@@ -25,9 +27,42 @@ public class WebberGunItem extends Item {
 
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level level, Player shooter, InteractionHand usedHand) {
-		
+
 		// Get reference to a gun that was used.
 		ItemStack gun = shooter.getItemInHand(usedHand);
+
+		boolean hasCobWeb = false;
+		
+		// IF: Shooter is not in creative mode.
+		if (!shooter.getAbilities().instabuild) {
+
+			// Get reference to shooter inventory.
+			Inventory inventory = shooter.getInventory();
+
+			// Iterate through all items in inventory.
+			for(ItemStack itemStack : inventory.items) {
+				
+				// IF: Item stack is stack of cobweb.
+				if(itemStack.is(Items.COBWEB)){
+					
+					// Reduce quantity of stack by 1.
+					itemStack.shrink(1);
+					
+					// We set variable to true to indicate that cobweb was found in inventory.
+					hasCobWeb = true;
+					
+					// Break the for loop.
+					break;
+				}
+			}
+
+		}
+		
+		// IF: Cobweb was not found.
+		if(!hasCobWeb) {
+			// Indicate that use was not successful.
+			return InteractionResultHolder.fail(gun);
+		}
 		
 		// Play throwing sound.
 		level.playSound((Player)null, shooter.getX(), shooter.getY(), shooter.getZ(), SoundEvents.FISHING_BOBBER_THROW, SoundSource.NEUTRAL, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
@@ -39,7 +74,7 @@ public class WebberGunItem extends Item {
 			CobwebProjectileEntity cobweb = new CobwebProjectileEntity(level, shooter);;
 			
 			// Shoot grenade.
-			cobweb.shootFromRotation(shooter, shooter.getXRot(), shooter.getYRot(), 0.0F, 1.5F, 1.0F);
+			cobweb.shootFromRotation(shooter, shooter.getXRot(), shooter.getYRot(), 0.0F, 4.0F, 0.0F);
           	  
 			// Add it to the level.
 			level.addFreshEntity(cobweb);
