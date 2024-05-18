@@ -54,7 +54,7 @@ public class IgniteGrenadeEntity extends BaseGrenadeEntity {
 	protected Item getDefaultItem() {
 		return GrenadeItems.IGNITE_GRENADE.get();
 	}
-	
+
 	@Override
 	protected int getBlastRadius() {
 		return UniqueWeaponryModConfig.IGNITE_GRENADE_BLAST_RADIUS;
@@ -71,10 +71,10 @@ public class IgniteGrenadeEntity extends BaseGrenadeEntity {
 
 		// Iterate through mobs
 		for (LivingEntity mob : mobs) {
-			
+
 			// Set mob on fire.
-			mob.setSecondsOnFire(UniqueWeaponryModConfig.IGNITE_GRENADE_SECONDS_DURATION);
-			
+			mob.igniteForSeconds(UniqueWeaponryModConfig.IGNITE_GRENADE_SECONDS_DURATION);
+
 		}
 
 		// Call mandatory base class code.
