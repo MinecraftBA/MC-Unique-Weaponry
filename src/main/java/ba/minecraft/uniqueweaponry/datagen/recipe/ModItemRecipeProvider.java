@@ -1,18 +1,22 @@
 package ba.minecraft.uniqueweaponry.datagen.recipe;
 
+import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.world.item.Items;
+
+import java.util.concurrent.CompletableFuture;
+
 import ba.minecraft.uniqueweaponry.common.item.GrenadeItems;
 import ba.minecraft.uniqueweaponry.common.item.GunItems;
 
 public final class ModItemRecipeProvider extends RecipeProvider {
 	
-	public ModItemRecipeProvider(DataGenerator dataGen) {
-		super(dataGen.getPackOutput());
+	public ModItemRecipeProvider(DataGenerator dataGen, CompletableFuture<Provider> lookupProvider) {
+		super(dataGen.getPackOutput(), lookupProvider);
 	}
 	
 	@Override
