@@ -20,7 +20,7 @@ public abstract class BaseGrenadeItem<T extends BaseGrenadeEntity> extends Item 
 
 	private static Properties createProperties() {
 		Properties properties = new Properties();
-		properties.stacksTo(MAX_STACK_SIZE);
+		properties.stacksTo(16);
 		return properties;
 	}
 

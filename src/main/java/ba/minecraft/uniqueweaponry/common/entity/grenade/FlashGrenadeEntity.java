@@ -66,7 +66,7 @@ public class FlashGrenadeEntity extends BaseGrenadeEntity {
 	protected void onHit(HitResult hitResult) {
 
 		// Make explosion audio/visual effects.
-		explode(SoundEvents.GENERIC_EXPLODE);
+		explode(SoundEvents.GENERIC_EXPLODE.get());
 
 		// Get affected mobs.
 		List<LivingEntity> mobs = getAffectedMobs(hitResult);
