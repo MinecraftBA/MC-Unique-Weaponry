@@ -1,7 +1,7 @@
 package ba.minecraft.uniqueweaponry.datagen.recipe;
 
 import net.minecraft.core.HolderLookup.Provider;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
@@ -15,8 +15,8 @@ import ba.minecraft.uniqueweaponry.common.item.GunItems;
 
 public final class ModItemRecipeProvider extends RecipeProvider {
 	
-	public ModItemRecipeProvider(DataGenerator dataGen, CompletableFuture<Provider> lookupProvider) {
-		super(dataGen.getPackOutput(), lookupProvider);
+	public ModItemRecipeProvider(PackOutput packOutput, CompletableFuture<Provider> lookupProvider) {
+		super(packOutput, lookupProvider);
 	}
 	
 	@Override

@@ -2,6 +2,7 @@ package ba.minecraft.uniqueweaponry.datagen;
 
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -26,11 +27,13 @@ public final class ModDataGenerators {
 		// Get reference to existing file helper.
 		//ExistingFileHelper exFileHelper = event.getExistingFileHelper();
 		
+		PackOutput packOutput = dataGen.getPackOutput();
+		
 		// Registration of recipes provided by mod
-		dataGen.addProvider(event.includeServer(), new ModItemRecipeProvider(dataGen, lookupProvider));
+		dataGen.addProvider(event.includeServer(), new ModItemRecipeProvider(packOutput, lookupProvider));
 		
 		// Language providers
-		dataGen.addProvider(event.includeClient(), new EnUsLanguageProvider(dataGen));
+		dataGen.addProvider(event.includeClient(), new EnUsLanguageProvider(packOutput));
 	}
 	
 }

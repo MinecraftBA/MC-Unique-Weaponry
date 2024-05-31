@@ -5,13 +5,13 @@ import ba.minecraft.uniqueweaponry.common.entity.GrenadeEntityTypes;
 import ba.minecraft.uniqueweaponry.common.entity.ProjectileEntityTypes;
 import ba.minecraft.uniqueweaponry.common.item.GrenadeItems;
 import ba.minecraft.uniqueweaponry.common.item.GunItems;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.LanguageProvider;
 
 public final class EnUsLanguageProvider extends LanguageProvider {
 
-	public EnUsLanguageProvider(DataGenerator dataGen) {
-		super(dataGen.getPackOutput(), UniqueWeaponryMod.MODID, "en_us");
+	public EnUsLanguageProvider(PackOutput packOutput) {
+		super(packOutput, UniqueWeaponryMod.MODID, "en_us");
 	}
 
 	@Override
