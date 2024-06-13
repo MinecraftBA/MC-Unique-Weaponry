@@ -26,7 +26,7 @@ import net.minecraft.world.phys.HitResult;
 public class FreezeGrenadeEntity  extends BaseGrenadeEntity {
 
 	// Defines that this entity will be registered as uniqueweaponry:freeze_grenade
-	private static final ResourceLocation ENTITY_LOC = new ModResourceLocation("freeze_grenade");
+	private static final ResourceLocation ENTITY_LOC = ModResourceLocation.Create("freeze_grenade");
 
 	public static EntityType<FreezeGrenadeEntity> createType() {
 

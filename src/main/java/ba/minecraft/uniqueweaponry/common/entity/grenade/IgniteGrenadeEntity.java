@@ -21,7 +21,7 @@ import net.minecraft.world.phys.HitResult;
 public class IgniteGrenadeEntity extends BaseGrenadeEntity {
 
 	// Defines that this entity will be registered as uniqueweaponry:ignite_grenade
-	private static final ResourceLocation ENTITY_LOC = new ModResourceLocation("ignite_grenade");
+	private static final ResourceLocation ENTITY_LOC = ModResourceLocation.Create("ignite_grenade");
 
 	public static EntityType<IgniteGrenadeEntity> createType() {
 
