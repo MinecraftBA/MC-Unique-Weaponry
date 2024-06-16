@@ -23,7 +23,7 @@ import net.minecraft.world.phys.HitResult;
 public class FlashGrenadeEntity extends BaseGrenadeEntity {
 
 	// Defines that this entity will be registered as uniqueweaponry:flash_grenade
-	private static final ResourceLocation ENTITY_LOC = new ModResourceLocation("flash_grenade");
+	private static final ResourceLocation ENTITY_LOC = ModResourceLocation.Create("flash_grenade");
 
 	public static EntityType<FlashGrenadeEntity> createType() {
 

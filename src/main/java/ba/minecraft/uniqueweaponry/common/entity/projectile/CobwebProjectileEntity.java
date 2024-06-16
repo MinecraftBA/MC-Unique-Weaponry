@@ -2,6 +2,7 @@ package ba.minecraft.uniqueweaponry.common.entity.projectile;
 
 import ba.minecraft.uniqueweaponry.common.entity.ProjectileEntityTypes;
 import ba.minecraft.uniqueweaponry.common.entity.projectile.CobwebProjectileEntity;
+import ba.minecraft.uniqueweaponry.common.helpers.ModResourceLocation;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
@@ -22,7 +23,7 @@ import net.minecraft.world.phys.EntityHitResult;
 
 public class CobwebProjectileEntity extends ThrowableItemProjectile{
 	
-	private static final ResourceLocation ENTITY_LOC = new ResourceLocation("cobweb");
+	private static final ResourceLocation ENTITY_LOC = ModResourceLocation.Create("cobweb");
 	
 	public static EntityType<CobwebProjectileEntity> createType() {
 
