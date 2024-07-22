@@ -23,6 +23,9 @@ public class UniqueWeaponryModConfig
     
     private static final ForgeConfigSpec.IntValue POISON_GRENADE_SECONDS_DURATION_CONFIG;
     private static final ForgeConfigSpec.IntValue POISON_GRENADE_BLAST_RADIUS_CONFIG;
+    
+    private static final ForgeConfigSpec.IntValue GRAVITY_GRENADE_SECONDS_DURATION_CONFIG;
+    private static final ForgeConfigSpec.IntValue GRAVITY_GRENADE_BLAST_RADIUS_CONFIG;
 
     public static int FLASH_GRENADE_SECONDS_DURATION;
     public static int FLASH_GRENADE_BLAST_RADIUS;
@@ -35,6 +38,9 @@ public class UniqueWeaponryModConfig
     
     public static int POISON_GRENADE_SECONDS_DURATION;
     public static int POISON_GRENADE_BLAST_RADIUS;
+    
+    public static int GRAVITY_GRENADE_SECONDS_DURATION;
+    public static int GRAVITY_GRENADE_BLAST_RADIUS;
     static 
     {
     	BUILDER.push("Configs for Unique Weaponry Mod");
@@ -65,6 +71,12 @@ public class UniqueWeaponryModConfig
     	POISON_GRENADE_BLAST_RADIUS_CONFIG = BUILDER.comment("Defines radius in blocks of poison grenade area of effect.")
 	            .defineInRange("Poison Grenade blast radius", 8, 4, 32);
     	
+    	GRAVITY_GRENADE_SECONDS_DURATION_CONFIG = BUILDER.comment("Defines for how many seconds will the mobs be pulled.")
+	            .defineInRange("Gravity Grenade duration", 5, 1, 60);
+    	
+    	GRAVITY_GRENADE_BLAST_RADIUS_CONFIG = BUILDER.comment("Defines radius in blocks of gravity grenade area of effect.")
+	            .defineInRange("Gravity Grenade blast radius", 8, 4, 32);
+    	
     	SPEC = BUILDER.build();
     }
     
@@ -82,5 +94,8 @@ public class UniqueWeaponryModConfig
     	
     	POISON_GRENADE_SECONDS_DURATION = POISON_GRENADE_SECONDS_DURATION_CONFIG.get();
     	POISON_GRENADE_BLAST_RADIUS = POISON_GRENADE_BLAST_RADIUS_CONFIG.get();
+    	
+    	GRAVITY_GRENADE_SECONDS_DURATION = GRAVITY_GRENADE_SECONDS_DURATION_CONFIG.get();
+    	GRAVITY_GRENADE_BLAST_RADIUS = GRAVITY_GRENADE_BLAST_RADIUS_CONFIG.get();
     }
 }

@@ -3,6 +3,7 @@ package ba.minecraft.uniqueweaponry.common.item;
 import ba.minecraft.uniqueweaponry.common.core.UniqueWeaponryMod;
 import ba.minecraft.uniqueweaponry.common.item.grenade.FlashGrenadeItem;
 import ba.minecraft.uniqueweaponry.common.item.grenade.FreezeGrenadeItem;
+import ba.minecraft.uniqueweaponry.common.item.grenade.GravityGrenadeItem;
 import ba.minecraft.uniqueweaponry.common.item.grenade.IgniteGrenadeItem;
 import ba.minecraft.uniqueweaponry.common.item.grenade.PoisonGrenadeItem;
 import net.minecraft.world.item.Item;
@@ -28,5 +29,8 @@ public final class GrenadeItems {
 	
 	public static final RegistryObject<PoisonGrenadeItem> POISON_GRENADE = 
 			REGISTRY.register("poison_grenade", () -> new PoisonGrenadeItem());
+	
+	public static final RegistryObject<GravityGrenadeItem> GRAVITY_GRENADE = 
+			REGISTRY.register("gravity_grenade", () -> new GravityGrenadeItem());
 
 }
