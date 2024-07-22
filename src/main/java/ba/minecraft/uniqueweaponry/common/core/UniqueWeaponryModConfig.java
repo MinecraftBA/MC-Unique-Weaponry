@@ -20,6 +20,9 @@ public class UniqueWeaponryModConfig
     
     private static final ForgeConfigSpec.IntValue IGNITE_GRENADE_SECONDS_DURATION_CONFIG;
     private static final ForgeConfigSpec.IntValue IGNITE_GRENADE_BLAST_RADIUS_CONFIG;
+    
+    private static final ForgeConfigSpec.IntValue POISON_GRENADE_SECONDS_DURATION_CONFIG;
+    private static final ForgeConfigSpec.IntValue POISON_GRENADE_BLAST_RADIUS_CONFIG;
 
     public static int FLASH_GRENADE_SECONDS_DURATION;
     public static int FLASH_GRENADE_BLAST_RADIUS;
@@ -30,6 +33,8 @@ public class UniqueWeaponryModConfig
     public static int IGNITE_GRENADE_SECONDS_DURATION;
     public static int IGNITE_GRENADE_BLAST_RADIUS;
     
+    public static int POISON_GRENADE_SECONDS_DURATION;
+    public static int POISON_GRENADE_BLAST_RADIUS;
     static 
     {
     	BUILDER.push("Configs for Unique Weaponry Mod");
@@ -54,6 +59,12 @@ public class UniqueWeaponryModConfig
     	IGNITE_GRENADE_BLAST_RADIUS_CONFIG = BUILDER.comment("Defines radius in blocks of ignite grenade area of effect")
 	            .defineInRange("Ignite Grenade blast radius", 8, 4, 32);
     	
+    	POISON_GRENADE_SECONDS_DURATION_CONFIG = BUILDER.comment("Defines for how many seconds will the mobs be poisoned.")
+	            .defineInRange("Poison Grenade duration", 5, 1, 60);
+    	
+    	POISON_GRENADE_BLAST_RADIUS_CONFIG = BUILDER.comment("Defines radius in blocks of poison grenade area of effect.")
+	            .defineInRange("Poison Grenade blast radius", 8, 4, 32);
+    	
     	SPEC = BUILDER.build();
     }
     
@@ -68,5 +79,8 @@ public class UniqueWeaponryModConfig
     	
     	IGNITE_GRENADE_SECONDS_DURATION = IGNITE_GRENADE_SECONDS_DURATION_CONFIG.get();
     	IGNITE_GRENADE_BLAST_RADIUS = IGNITE_GRENADE_BLAST_RADIUS_CONFIG.get();
+    	
+    	POISON_GRENADE_SECONDS_DURATION = POISON_GRENADE_SECONDS_DURATION_CONFIG.get();
+    	POISON_GRENADE_BLAST_RADIUS = POISON_GRENADE_BLAST_RADIUS_CONFIG.get();
     }
 }

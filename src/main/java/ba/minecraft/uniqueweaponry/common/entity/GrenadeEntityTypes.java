@@ -4,6 +4,7 @@ import ba.minecraft.uniqueweaponry.common.core.UniqueWeaponryMod;
 import ba.minecraft.uniqueweaponry.common.entity.grenade.FlashGrenadeEntity;
 import ba.minecraft.uniqueweaponry.common.entity.grenade.FreezeGrenadeEntity;
 import ba.minecraft.uniqueweaponry.common.entity.grenade.IgniteGrenadeEntity;
+import ba.minecraft.uniqueweaponry.common.entity.grenade.PoisonGrenadeEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -24,5 +25,8 @@ public final class GrenadeEntityTypes {
 	
 	public static final RegistryObject<EntityType<FreezeGrenadeEntity>> FREEZE_GRENADE =
 			REGISTRY.register("freeze_grenade", () -> FreezeGrenadeEntity.createType());
+	
+	public static final RegistryObject<EntityType<PoisonGrenadeEntity>> POISON_GRENADE =
+			REGISTRY.register("poison_grenade", () -> PoisonGrenadeEntity.createType());
 
 }
