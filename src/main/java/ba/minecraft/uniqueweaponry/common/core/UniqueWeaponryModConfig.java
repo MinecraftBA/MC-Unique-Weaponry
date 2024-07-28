@@ -51,31 +51,31 @@ public class UniqueWeaponryModConfig
 	            .defineInRange("Flash Grenade duration", 5, 1, 60);
     	
     	FLASH_GRENADE_BLAST_RADIUS_CONFIG = BUILDER.comment("Defines radius in blocks of flash grenade area of effect.")
-	            .defineInRange("Flash Grenade blast radius", 8, 4, 32);
+	            .defineInRange("Flash Grenade blast radius", 16, 4, 64);
     	
     	FREEZE_GRENADE_SECONDS_DURATION_CONFIG = BUILDER.comment("Defines for how many seconds will the mobs be frozen")
 	            .defineInRange("Freeze Grenade duration", 30, 1, 60);
     	
     	FREEZE_GRENADE_BLAST_RADIUS_CONFIG = BUILDER.comment("Defines radius in blocks of freeze grenade area of effect")
-	            .defineInRange("Freeze Grenade blast radius", 8, 4, 32);
+	            .defineInRange("Freeze Grenade blast radius", 16, 4, 64);
 
     	IGNITE_GRENADE_SECONDS_DURATION_CONFIG = BUILDER.comment("Defines for how many seconds will the mobs be ignited")
 	            .defineInRange("Ignite Grenade duration", 5, 1, 60);
     	
     	IGNITE_GRENADE_BLAST_RADIUS_CONFIG = BUILDER.comment("Defines radius in blocks of ignite grenade area of effect")
-	            .defineInRange("Ignite Grenade blast radius", 8, 4, 32);
+	            .defineInRange("Ignite Grenade blast radius", 16, 4, 64);
     	
     	POISON_GRENADE_SECONDS_DURATION_CONFIG = BUILDER.comment("Defines for how many seconds will the mobs be poisoned.")
 	            .defineInRange("Poison Grenade duration", 5, 1, 60);
     	
     	POISON_GRENADE_BLAST_RADIUS_CONFIG = BUILDER.comment("Defines radius in blocks of poison grenade area of effect.")
-	            .defineInRange("Poison Grenade blast radius", 8, 4, 32);
+	            .defineInRange("Poison Grenade blast radius", 16, 4, 64);
     	
     	GRAVITY_GRENADE_SECONDS_DURATION_CONFIG = BUILDER.comment("Defines for how many seconds will the mobs be pulled.")
 	            .defineInRange("Gravity Grenade duration", 5, 1, 60);
     	
     	GRAVITY_GRENADE_BLAST_RADIUS_CONFIG = BUILDER.comment("Defines radius in blocks of gravity grenade area of effect.")
-	            .defineInRange("Gravity Grenade blast radius", 8, 4, 32);
+	            .defineInRange("Gravity Grenade blast radius", 16, 4, 64);
     	
     	SPEC = BUILDER.build();
     }
