@@ -71,7 +71,7 @@ public class UniqueWeaponryModConfig
     	POISON_GRENADE_BLAST_RADIUS_CONFIG = BUILDER.comment("Defines radius in blocks of poison grenade area of effect.")
 	            .defineInRange("Poison Grenade blast radius", 16, 4, 64);
     	
-    	LEVITATE_GRENADE_SECONDS_DURATION_CONFIG = BUILDER.comment("Defines for how many seconds will the mobs be pulled.")
+    	LEVITATE_GRENADE_SECONDS_DURATION_CONFIG = BUILDER.comment("Defines for how many seconds will the mobs float in air.")
 	            .defineInRange("Levitate Grenade duration", 5, 1, 60);
     	
     	LEVITATE_GRENADE_BLAST_RADIUS_CONFIG = BUILDER.comment("Defines radius in blocks of levitate grenade area of effect.")
