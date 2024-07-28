@@ -24,8 +24,8 @@ public class UniqueWeaponryModConfig
     private static final ForgeConfigSpec.IntValue POISON_GRENADE_SECONDS_DURATION_CONFIG;
     private static final ForgeConfigSpec.IntValue POISON_GRENADE_BLAST_RADIUS_CONFIG;
     
-    private static final ForgeConfigSpec.IntValue GRAVITY_GRENADE_SECONDS_DURATION_CONFIG;
-    private static final ForgeConfigSpec.IntValue GRAVITY_GRENADE_BLAST_RADIUS_CONFIG;
+    private static final ForgeConfigSpec.IntValue LEVITATE_GRENADE_SECONDS_DURATION_CONFIG;
+    private static final ForgeConfigSpec.IntValue LEVITATE_GRENADE_BLAST_RADIUS_CONFIG;
 
     public static int FLASH_GRENADE_SECONDS_DURATION;
     public static int FLASH_GRENADE_BLAST_RADIUS;
@@ -71,11 +71,11 @@ public class UniqueWeaponryModConfig
     	POISON_GRENADE_BLAST_RADIUS_CONFIG = BUILDER.comment("Defines radius in blocks of poison grenade area of effect.")
 	            .defineInRange("Poison Grenade blast radius", 16, 4, 64);
     	
-    	GRAVITY_GRENADE_SECONDS_DURATION_CONFIG = BUILDER.comment("Defines for how many seconds will the mobs be pulled.")
-	            .defineInRange("Gravity Grenade duration", 5, 1, 60);
+    	LEVITATE_GRENADE_SECONDS_DURATION_CONFIG = BUILDER.comment("Defines for how many seconds will the mobs be pulled.")
+	            .defineInRange("Levitate Grenade duration", 5, 1, 60);
     	
-    	GRAVITY_GRENADE_BLAST_RADIUS_CONFIG = BUILDER.comment("Defines radius in blocks of gravity grenade area of effect.")
-	            .defineInRange("Gravity Grenade blast radius", 16, 4, 64);
+    	LEVITATE_GRENADE_BLAST_RADIUS_CONFIG = BUILDER.comment("Defines radius in blocks of levitate grenade area of effect.")
+	            .defineInRange("Levitate Grenade blast radius", 16, 4, 64);
     	
     	SPEC = BUILDER.build();
     }
@@ -95,7 +95,7 @@ public class UniqueWeaponryModConfig
     	POISON_GRENADE_SECONDS_DURATION = POISON_GRENADE_SECONDS_DURATION_CONFIG.get();
     	POISON_GRENADE_BLAST_RADIUS = POISON_GRENADE_BLAST_RADIUS_CONFIG.get();
     	
-    	LEVITATE_GRENADE_SECONDS_DURATION = GRAVITY_GRENADE_SECONDS_DURATION_CONFIG.get();
-    	LEVITATE_GRENADE_BLAST_RADIUS = GRAVITY_GRENADE_BLAST_RADIUS_CONFIG.get();
+    	LEVITATE_GRENADE_SECONDS_DURATION = LEVITATE_GRENADE_SECONDS_DURATION_CONFIG.get();
+    	LEVITATE_GRENADE_BLAST_RADIUS = LEVITATE_GRENADE_BLAST_RADIUS_CONFIG.get();
     }
 }
