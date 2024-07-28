@@ -3,7 +3,7 @@ package ba.minecraft.uniqueweaponry.common.entity;
 import ba.minecraft.uniqueweaponry.common.core.UniqueWeaponryMod;
 import ba.minecraft.uniqueweaponry.common.entity.grenade.FlashGrenadeEntity;
 import ba.minecraft.uniqueweaponry.common.entity.grenade.FreezeGrenadeEntity;
-import ba.minecraft.uniqueweaponry.common.entity.grenade.GravityGrenadeEntity;
+import ba.minecraft.uniqueweaponry.common.entity.grenade.LevitateGrenadeEntity;
 import ba.minecraft.uniqueweaponry.common.entity.grenade.IgniteGrenadeEntity;
 import ba.minecraft.uniqueweaponry.common.entity.grenade.PoisonGrenadeEntity;
 import net.minecraft.world.entity.EntityType;
@@ -30,7 +30,7 @@ public final class GrenadeEntityTypes {
 	public static final RegistryObject<EntityType<PoisonGrenadeEntity>> POISON_GRENADE =
 			REGISTRY.register("poison_grenade", () -> PoisonGrenadeEntity.createType());
 	
-	public static final RegistryObject<EntityType<GravityGrenadeEntity>> GRAVITY_GRENADE =
-			REGISTRY.register("gravity_grenade", () -> GravityGrenadeEntity.createType());
+	public static final RegistryObject<EntityType<LevitateGrenadeEntity>> LEVITATE_GRENADE =
+			REGISTRY.register("gravity_grenade", () -> LevitateGrenadeEntity.createType());
 
 }

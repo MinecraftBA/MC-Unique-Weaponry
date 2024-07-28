@@ -20,14 +20,14 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
 
-public class GravityGrenadeEntity extends BaseGrenadeEntity {
+public class LevitateGrenadeEntity extends BaseGrenadeEntity {
 
 	// Defines that this entity will be registered as uniqueweaponry:flash_grenade
 	private static final ResourceLocation ENTITY_LOC = ModResourceLocation.Create("gravity_grenade");
 
-	public static EntityType<GravityGrenadeEntity> createType() {
+	public static EntityType<LevitateGrenadeEntity> createType() {
 
-		Builder<GravityGrenadeEntity> builder = Builder.of(GravityGrenadeEntity::new, MobCategory.MISC);
+		Builder<LevitateGrenadeEntity> builder = Builder.of(LevitateGrenadeEntity::new, MobCategory.MISC);
 
 		builder.sized(0.5F, 0.5F);
 		builder.clientTrackingRange(20);
@@ -35,31 +35,31 @@ public class GravityGrenadeEntity extends BaseGrenadeEntity {
 
 		String id = ENTITY_LOC.toString();
 
-		EntityType<GravityGrenadeEntity> entityType = builder.build(id);
+		EntityType<LevitateGrenadeEntity> entityType = builder.build(id);
 
 		return entityType;
 	}
 
-	public GravityGrenadeEntity(EntityType<? extends ThrowableItemProjectile> entityType, Level level) {
+	public LevitateGrenadeEntity(EntityType<? extends ThrowableItemProjectile> entityType, Level level) {
 		super(entityType, level);
 	}
 
-	public GravityGrenadeEntity(Level level, LivingEntity thrower) {
-		super(GrenadeEntityTypes.GRAVITY_GRENADE.get(), thrower, level);
+	public LevitateGrenadeEntity(Level level, LivingEntity thrower) {
+		super(GrenadeEntityTypes.LEVITATE_GRENADE.get(), thrower, level);
 	}
 
-	public GravityGrenadeEntity(Level level) {
-		super(GrenadeEntityTypes.GRAVITY_GRENADE.get(), level);
+	public LevitateGrenadeEntity(Level level) {
+		super(GrenadeEntityTypes.LEVITATE_GRENADE.get(), level);
 	}
 
 	@Override
 	protected Item getDefaultItem() {
-		return GrenadeItems.GRAVITY_GRENADE.get();
+		return GrenadeItems.LEVITATE_GRENADE.get();
 	}
 
 	@Override
 	protected int getBlastRadius() {
-		return UniqueWeaponryModConfig.GRAVITY_GRENADE_BLAST_RADIUS;
+		return UniqueWeaponryModConfig.LEVITATE_GRENADE_BLAST_RADIUS;
 	}
 
 	@Override
@@ -75,7 +75,7 @@ public class GravityGrenadeEntity extends BaseGrenadeEntity {
 		for (LivingEntity mob : mobs) {
 
 			// Create instance of blindness effect.
-			MobEffectInstance effectInstance = new MobEffectInstance(MobEffects.LEVITATION, UniqueWeaponryModConfig.GRAVITY_GRENADE_SECONDS_DURATION * 20);
+			MobEffectInstance effectInstance = new MobEffectInstance(MobEffects.LEVITATION, UniqueWeaponryModConfig.LEVITATE_GRENADE_SECONDS_DURATION * 20);
 
 			// Apply effect to mob.
 			mob.addEffect(effectInstance);

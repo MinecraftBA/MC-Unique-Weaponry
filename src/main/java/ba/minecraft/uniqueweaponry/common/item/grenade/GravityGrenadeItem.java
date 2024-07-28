@@ -1,15 +1,15 @@
 package ba.minecraft.uniqueweaponry.common.item.grenade;
 
-import ba.minecraft.uniqueweaponry.common.entity.grenade.GravityGrenadeEntity;
+import ba.minecraft.uniqueweaponry.common.entity.grenade.LevitateGrenadeEntity;
 import ba.minecraft.uniqueweaponry.common.item.grenade.base.BaseGrenadeItem;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 
-public class GravityGrenadeItem extends BaseGrenadeItem<GravityGrenadeEntity> {
+public class GravityGrenadeItem extends BaseGrenadeItem<LevitateGrenadeEntity> {
 
 	@Override
-	public GravityGrenadeEntity CreateEntity(Level level, LivingEntity thrower) {
-		return new GravityGrenadeEntity(level, thrower);
+	public LevitateGrenadeEntity CreateEntity(Level level, LivingEntity thrower) {
+		return new LevitateGrenadeEntity(level, thrower);
 	}
 	
 }
