@@ -30,7 +30,7 @@ public final class GrenadeEntityTypes {
 	public static final RegistryObject<EntityType<PoisonGrenadeEntity>> POISON_GRENADE =
 			REGISTRY.register("poison_grenade", () -> PoisonGrenadeEntity.createType());
 	
-	public static final RegistryObject<EntityType<LevitateGrenadeEntity>> GRAVITY_GRENADE =
-			REGISTRY.register("gravity_grenade", () -> LevitateGrenadeEntity.createType());
+	public static final RegistryObject<EntityType<LevitateGrenadeEntity>> LEVITATE_GRENADE =
+			REGISTRY.register("levitate_grenade", () -> LevitateGrenadeEntity.createType());
 
 }

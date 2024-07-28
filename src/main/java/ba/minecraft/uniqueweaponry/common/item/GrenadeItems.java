@@ -30,7 +30,7 @@ public final class GrenadeItems {
 	public static final RegistryObject<PoisonGrenadeItem> POISON_GRENADE = 
 			REGISTRY.register("poison_grenade", () -> new PoisonGrenadeItem());
 	
-	public static final RegistryObject<LevitateGrenadeItem> GRAVITY_GRENADE = 
-			REGISTRY.register("gravity_grenade", () -> new LevitateGrenadeItem());
+	public static final RegistryObject<LevitateGrenadeItem> LEVITATE_GRENADE = 
+			REGISTRY.register("levitate_grenade", () -> new LevitateGrenadeItem());
 
 }

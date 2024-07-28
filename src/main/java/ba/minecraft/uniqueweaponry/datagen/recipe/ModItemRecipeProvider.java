@@ -66,7 +66,7 @@ public final class ModItemRecipeProvider extends RecipeProvider {
 	    	.unlockedBy(getHasName(Items.SPIDER_EYE), has(Items.SPIDER_EYE))
 	    	.save(recipeOutput);
 		
-		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GrenadeItems.GRAVITY_GRENADE.get(), 1)
+		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GrenadeItems.LEVITATE_GRENADE.get(), 1)
 	    	.define('O', Items.OBSIDIAN)
 	    	.define('G', Items.GUNPOWDER)
 	    	.define('R', Items.REDSTONE)

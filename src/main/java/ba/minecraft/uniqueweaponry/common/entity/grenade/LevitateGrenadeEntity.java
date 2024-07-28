@@ -45,21 +45,21 @@ public class LevitateGrenadeEntity extends BaseGrenadeEntity {
 	}
 
 	public LevitateGrenadeEntity(Level level, LivingEntity thrower) {
-		super(GrenadeEntityTypes.GRAVITY_GRENADE.get(), thrower, level);
+		super(GrenadeEntityTypes.LEVITATE_GRENADE.get(), thrower, level);
 	}
 
 	public LevitateGrenadeEntity(Level level) {
-		super(GrenadeEntityTypes.GRAVITY_GRENADE.get(), level);
+		super(GrenadeEntityTypes.LEVITATE_GRENADE.get(), level);
 	}
 
 	@Override
 	protected Item getDefaultItem() {
-		return GrenadeItems.GRAVITY_GRENADE.get();
+		return GrenadeItems.LEVITATE_GRENADE.get();
 	}
 
 	@Override
 	protected int getBlastRadius() {
-		return UniqueWeaponryModConfig.GRAVITY_GRENADE_BLAST_RADIUS;
+		return UniqueWeaponryModConfig.LEVITATE_GRENADE_BLAST_RADIUS;
 	}
 
 	@Override
@@ -75,7 +75,7 @@ public class LevitateGrenadeEntity extends BaseGrenadeEntity {
 		for (LivingEntity mob : mobs) {
 
 			// Create instance of blindness effect.
-			MobEffectInstance effectInstance = new MobEffectInstance(MobEffects.LEVITATION, UniqueWeaponryModConfig.GRAVITY_GRENADE_SECONDS_DURATION * 20);
+			MobEffectInstance effectInstance = new MobEffectInstance(MobEffects.LEVITATION, UniqueWeaponryModConfig.LEVITATE_GRENADE_SECONDS_DURATION * 20);
 
 			// Apply effect to mob.
 			mob.addEffect(effectInstance);
