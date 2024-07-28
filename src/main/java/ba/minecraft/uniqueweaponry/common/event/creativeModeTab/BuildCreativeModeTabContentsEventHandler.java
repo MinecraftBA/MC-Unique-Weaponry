@@ -24,7 +24,7 @@ public final class BuildCreativeModeTabContentsEventHandler {
 			event.accept(GrenadeItems.FREEZE_GRENADE);
 			event.accept(GrenadeItems.IGNITE_GRENADE);
 			event.accept(GrenadeItems.POISON_GRENADE);
-			event.accept(GrenadeItems.GRAVITY_GRENADE);
+			event.accept(GrenadeItems.LEVITATE_GRENADE);
 			event.accept(GunItems.WEBBER);
 		}
 
