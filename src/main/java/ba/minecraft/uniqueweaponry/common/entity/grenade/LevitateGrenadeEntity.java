@@ -23,7 +23,7 @@ import net.minecraft.world.phys.HitResult;
 public class LevitateGrenadeEntity extends BaseGrenadeEntity {
 
 	// Defines that this entity will be registered as uniqueweaponry:flash_grenade
-	private static final ResourceLocation ENTITY_LOC = ModResourceLocation.Create("gravity_grenade");
+	private static final ResourceLocation ENTITY_LOC = ModResourceLocation.Create("levitate_grenade");
 
 	public static EntityType<LevitateGrenadeEntity> createType() {
 
