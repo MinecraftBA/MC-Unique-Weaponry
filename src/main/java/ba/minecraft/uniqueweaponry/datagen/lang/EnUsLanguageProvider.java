@@ -27,7 +27,7 @@ public final class EnUsLanguageProvider extends LanguageProvider {
 	private void addGrenadeItems() {
 		add(GrenadeItems.FLASH_GRENADE.get(), "Flash Grenade");
 		add(GrenadeItems.FREEZE_GRENADE.get(), "Freeze Grenade");
-		add(GrenadeItems.LEVITATE_GRENADE.get(), "Levitate Grenade");
+		add(GrenadeItems.GRAVITY_GRENADE.get(), "Gravity Grenade");
 		add(GrenadeItems.IGNITE_GRENADE.get(), "Ignite Grenade");
 		add(GrenadeItems.POISON_GRENADE.get(), "Poison Grenade");
 	}
@@ -35,7 +35,7 @@ public final class EnUsLanguageProvider extends LanguageProvider {
 	private void addGrenadeEntities() {
 		add(GrenadeEntityTypes.FLASH_GRENADE.get(), "Flash Grenade");
 		add(GrenadeEntityTypes.FREEZE_GRENADE.get(), "Freeze Grenade");
-		add(GrenadeEntityTypes.LEVITATE_GRENADE.get(), "Levitate Grenade");
+		add(GrenadeEntityTypes.GRAVITY_GRENADE.get(), "Gravity Grenade");
 		add(GrenadeEntityTypes.IGNITE_GRENADE.get(), "Ignite Grenade");
 		add(GrenadeEntityTypes.POISON_GRENADE.get(), "Poison Grenade");
 	}
