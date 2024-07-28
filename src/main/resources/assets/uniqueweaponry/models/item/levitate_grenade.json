@@ -1,0 +1,8 @@
+{
+	"parent": "uniqueweaponry:item/base_grenade",
+	"textures": {
+		"1": "uniqueweaponry:item/levitate_grenade_fuse",
+		"2": "uniqueweaponry:item/levitate_grenade_body",
+		"particle": "uniqueweaponry:item/levitate_grenade_body"
+	}
+}

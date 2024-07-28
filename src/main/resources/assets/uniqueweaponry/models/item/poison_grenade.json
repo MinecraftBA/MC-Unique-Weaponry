@@ -1,0 +1,8 @@
+{
+	"parent": "uniqueweaponry:item/base_grenade",
+	"textures": {
+		"1": "uniqueweaponry:item/poison_grenade_fuse",
+		"2": "uniqueweaponry:item/poison_grenade_body",
+		"particle": "uniqueweaponry:item/poison_grenade_body"
+	}
+}

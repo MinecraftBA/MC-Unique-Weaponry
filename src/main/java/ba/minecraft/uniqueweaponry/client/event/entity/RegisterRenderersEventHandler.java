@@ -19,8 +19,10 @@ public final class RegisterRenderersEventHandler {
 		event.registerEntityRenderer(GrenadeEntityTypes.FLASH_GRENADE.get(), ThrownItemRenderer::new);
 		event.registerEntityRenderer(GrenadeEntityTypes.FREEZE_GRENADE.get(), ThrownItemRenderer::new);
 		event.registerEntityRenderer(GrenadeEntityTypes.IGNITE_GRENADE.get(), ThrownItemRenderer::new);
-		event.registerEntityRenderer(ProjectileEntityTypes.COBWEB.get(), ThrownItemRenderer::new);
+		event.registerEntityRenderer(GrenadeEntityTypes.POISON_GRENADE.get(), ThrownItemRenderer::new);
+		event.registerEntityRenderer(GrenadeEntityTypes.LEVITATE_GRENADE.get(), ThrownItemRenderer::new);
 		
+		event.registerEntityRenderer(ProjectileEntityTypes.COBWEB.get(), ThrownItemRenderer::new);
 	}
 	
 }

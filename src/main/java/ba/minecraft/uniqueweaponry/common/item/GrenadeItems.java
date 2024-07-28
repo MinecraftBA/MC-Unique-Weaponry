@@ -3,7 +3,9 @@ package ba.minecraft.uniqueweaponry.common.item;
 import ba.minecraft.uniqueweaponry.common.core.UniqueWeaponryMod;
 import ba.minecraft.uniqueweaponry.common.item.grenade.FlashGrenadeItem;
 import ba.minecraft.uniqueweaponry.common.item.grenade.FreezeGrenadeItem;
+import ba.minecraft.uniqueweaponry.common.item.grenade.LevitateGrenadeItem;
 import ba.minecraft.uniqueweaponry.common.item.grenade.IgniteGrenadeItem;
+import ba.minecraft.uniqueweaponry.common.item.grenade.PoisonGrenadeItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -24,5 +26,11 @@ public final class GrenadeItems {
 	
 	public static final RegistryObject<FreezeGrenadeItem> FREEZE_GRENADE = 
 			REGISTRY.register("freeze_grenade", () -> new FreezeGrenadeItem());
+	
+	public static final RegistryObject<PoisonGrenadeItem> POISON_GRENADE = 
+			REGISTRY.register("poison_grenade", () -> new PoisonGrenadeItem());
+	
+	public static final RegistryObject<LevitateGrenadeItem> LEVITATE_GRENADE = 
+			REGISTRY.register("levitate_grenade", () -> new LevitateGrenadeItem());
 
 }
