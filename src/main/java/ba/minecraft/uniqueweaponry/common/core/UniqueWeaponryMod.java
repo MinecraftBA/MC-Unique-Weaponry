@@ -6,6 +6,7 @@ import ba.minecraft.uniqueweaponry.common.entity.GrenadeEntityTypes;
 import ba.minecraft.uniqueweaponry.common.entity.ProjectileEntityTypes;
 import ba.minecraft.uniqueweaponry.common.item.GrenadeItems;
 import ba.minecraft.uniqueweaponry.common.item.GunItems;
+import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartedEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -51,6 +52,11 @@ public class UniqueWeaponryMod
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
+    	DispenserBlock.registerProjectileBehavior(GrenadeItems.FLASH_GRENADE.get());
+    	DispenserBlock.registerProjectileBehavior(GrenadeItems.FREEZE_GRENADE.get());
+    	DispenserBlock.registerProjectileBehavior(GrenadeItems.IGNITE_GRENADE.get());
+    	DispenserBlock.registerProjectileBehavior(GrenadeItems.LEVITATE_GRENADE.get());
+    	DispenserBlock.registerProjectileBehavior(GrenadeItems.POISON_GRENADE.get());
     }
 
     @SubscribeEvent
