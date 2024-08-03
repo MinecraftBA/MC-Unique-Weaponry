@@ -47,8 +47,12 @@ public class FreezeGrenadeEntity  extends BaseGrenadeEntity {
 		super(entityType, level);
 	}
 
-	public FreezeGrenadeEntity(Level level, LivingEntity thrower) {
+	public FreezeGrenadeEntity(LivingEntity thrower, Level level) {
 		super(GrenadeEntityTypes.FREEZE_GRENADE.get(), thrower, level);
+	}
+	
+	public FreezeGrenadeEntity(double x, double y, double z, Level level) {
+		super(GrenadeEntityTypes.FREEZE_GRENADE.get(), x, y, z, level);
 	}
 
 	public FreezeGrenadeEntity(Level level) {

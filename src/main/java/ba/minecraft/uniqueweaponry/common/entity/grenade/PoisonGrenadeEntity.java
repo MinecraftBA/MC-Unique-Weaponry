@@ -44,8 +44,12 @@ public class PoisonGrenadeEntity  extends BaseGrenadeEntity {
 		super(entityType, level);
 	}
 
-	public PoisonGrenadeEntity(Level level, LivingEntity thrower) {
+	public PoisonGrenadeEntity(LivingEntity thrower, Level level) {
 		super(GrenadeEntityTypes.POISON_GRENADE.get(), thrower, level);
+	}
+	
+	public PoisonGrenadeEntity(double x, double y, double z, Level level) {
+		super(GrenadeEntityTypes.POISON_GRENADE.get(), x, y, z, level);
 	}
 
 	public PoisonGrenadeEntity(Level level) {

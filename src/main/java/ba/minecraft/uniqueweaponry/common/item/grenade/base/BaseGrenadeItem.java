@@ -1,6 +1,8 @@
 package ba.minecraft.uniqueweaponry.common.item.grenade.base;
 
 import ba.minecraft.uniqueweaponry.common.entity.grenade.base.BaseGrenadeEntity;
+import net.minecraft.core.Direction;
+import net.minecraft.core.Position;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -8,11 +10,13 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ProjectileItem;
 import net.minecraft.world.level.Level;
 
-public abstract class BaseGrenadeItem<T extends BaseGrenadeEntity> extends Item {
+public abstract class BaseGrenadeItem<T extends BaseGrenadeEntity> extends Item implements ProjectileItem {
 
 	public BaseGrenadeItem() {
 		super(createProperties());
@@ -24,10 +28,11 @@ public abstract class BaseGrenadeItem<T extends BaseGrenadeEntity> extends Item 
 		return properties;
 	}
 
-	public abstract T CreateEntity(Level level, LivingEntity thrower);
+	public abstract T CreateEntity(LivingEntity thrower, Level level);
+	
+	public abstract T CreateEntity(double x, double y, double z, Level level);
 
 	@Override
-
 	public InteractionResultHolder<ItemStack> use(Level level, Player thrower, InteractionHand usedHand) {
 
 		// Get reference to grenade held in hand.
@@ -41,7 +46,7 @@ public abstract class BaseGrenadeItem<T extends BaseGrenadeEntity> extends Item 
 		if (!level.isClientSide) {
 
 			// Create instance of grenade entity.
-			T grenade = CreateEntity(level, thrower);
+			T grenade = CreateEntity(thrower, level);
 
 			// Set grenade item that is being thrown.
 			grenade.setItem(itemStack);
@@ -67,4 +72,17 @@ public abstract class BaseGrenadeItem<T extends BaseGrenadeEntity> extends Item 
 		return InteractionResultHolder.sidedSuccess(itemStack, level.isClientSide());
 	}
 
+	@Override
+	public Projectile asProjectile(Level level, Position position, ItemStack itemStack, Direction direction) {
+
+		// Create instance of grenade entity.
+		T grenade = CreateEntity(position.x(), position.y(), position.z(), level);
+
+		// Set item stack from which grenade was created.
+		grenade.setItem(itemStack);
+		
+		return grenade;
+	}
+
+	
 }

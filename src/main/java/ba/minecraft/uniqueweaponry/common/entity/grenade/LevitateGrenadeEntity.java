@@ -44,8 +44,12 @@ public class LevitateGrenadeEntity extends BaseGrenadeEntity {
 		super(entityType, level);
 	}
 
-	public LevitateGrenadeEntity(Level level, LivingEntity thrower) {
+	public LevitateGrenadeEntity(LivingEntity thrower, Level level) {
 		super(GrenadeEntityTypes.LEVITATE_GRENADE.get(), thrower, level);
+	}
+	
+	public LevitateGrenadeEntity(double x, double y, double z, Level level) {
+		super(GrenadeEntityTypes.LEVITATE_GRENADE.get(), x, y, z, level);
 	}
 
 	public LevitateGrenadeEntity(Level level) {

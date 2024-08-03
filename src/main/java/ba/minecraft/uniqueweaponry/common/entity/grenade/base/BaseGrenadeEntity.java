@@ -23,9 +23,13 @@ public abstract class BaseGrenadeEntity extends ThrowableItemProjectile {
 		super(entityType, level);
 	}
 
-	public BaseGrenadeEntity(EntityType<? extends ThrowableItemProjectile> entityType, LivingEntity pShooter, Level pLevel) {
-		super(entityType, pShooter, pLevel);
+	public BaseGrenadeEntity(EntityType<? extends ThrowableItemProjectile> entityType, LivingEntity shooter, Level level) {
+		super(entityType, shooter, level);
 	}
+	
+    public BaseGrenadeEntity(EntityType<? extends ThrowableItemProjectile> entityType, double x, double y, double z, Level level) {
+        super(entityType, x, y, z, level);
+    }
 	
 	/**
 	 * Override to specify radius of blast area.
