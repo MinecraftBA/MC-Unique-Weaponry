@@ -8,7 +8,13 @@ import net.minecraft.world.level.Level;
 public class FreezeGrenadeItem extends BaseGrenadeItem<FreezeGrenadeEntity> {
 
 	@Override
-	public FreezeGrenadeEntity CreateEntity(Level level, LivingEntity thrower) {
-		return new FreezeGrenadeEntity(level, thrower);
+	public FreezeGrenadeEntity CreateEntity(LivingEntity thrower, Level level) {
+		return new FreezeGrenadeEntity(thrower, level);
 	}
+
+	@Override
+	public FreezeGrenadeEntity CreateEntity(double x, double y, double z, Level level) {
+		return new FreezeGrenadeEntity(x, y, z, level);
+	}
+	
 }	
