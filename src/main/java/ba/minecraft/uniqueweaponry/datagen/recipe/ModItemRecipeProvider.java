@@ -10,6 +10,7 @@ import net.minecraft.world.item.Items;
 
 import java.util.concurrent.CompletableFuture;
 
+import ba.minecraft.uniqueweaponry.common.item.BookItems;
 import ba.minecraft.uniqueweaponry.common.item.GrenadeItems;
 import ba.minecraft.uniqueweaponry.common.item.GunItems;
 
@@ -87,6 +88,17 @@ public final class ModItemRecipeProvider extends RecipeProvider {
 	    	.pattern(" I ")
 	    	.unlockedBy(getHasName(Items.STRING), has(Items.STRING))
 	    	.save(recipeOutput);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, BookItems.EVOKERS_TOME.get(), 1)
+    	.define('B', Items.BOOK)
+    	.define('T', Items.TOTEM_OF_UNDYING)
+    	.define('A', Items.AMETHYST_SHARD)
+    	.define('E', Items.EMERALD)
+    	.pattern("   ")
+    	.pattern("EAB")
+    	.pattern(" T ")
+    	.unlockedBy(getHasName(Items.TOTEM_OF_UNDYING), has(Items.TOTEM_OF_UNDYING))
+    	.save(recipeOutput);
 	}
 	
 }

@@ -26,6 +26,8 @@ public class UniqueWeaponryModConfig
     
     private static final ForgeConfigSpec.IntValue LEVITATE_GRENADE_SECONDS_DURATION_CONFIG;
     private static final ForgeConfigSpec.IntValue LEVITATE_GRENADE_BLAST_RADIUS_CONFIG;
+    
+    private static final ForgeConfigSpec.IntValue EVOKERS_TOME_COOLDOWN_CONFIG;
 
     public static int FLASH_GRENADE_SECONDS_DURATION;
     public static int FLASH_GRENADE_BLAST_RADIUS;
@@ -41,6 +43,7 @@ public class UniqueWeaponryModConfig
     
     public static int LEVITATE_GRENADE_SECONDS_DURATION;
     public static int LEVITATE_GRENADE_BLAST_RADIUS;
+    public static int EVOKERS_TOME_COOLDOWN;
     static 
     {
     	BUILDER.push("Configs for Unique Weaponry Mod");
@@ -77,6 +80,9 @@ public class UniqueWeaponryModConfig
     	LEVITATE_GRENADE_BLAST_RADIUS_CONFIG = BUILDER.comment("Defines radius in blocks of levitate grenade area of effect.")
 	            .defineInRange("Levitate Grenade blast radius", 16, 4, 64);
     	
+    	EVOKERS_TOME_COOLDOWN_CONFIG = BUILDER.comment("Defines cooldown in ticks of evokers tome use.")
+	            .defineInRange("Evokers Tome Cooldown. 20 ticks is 1 second", 40, 0, 300);
+    	
     	SPEC = BUILDER.build();
     }
     
@@ -97,5 +103,7 @@ public class UniqueWeaponryModConfig
     	
     	LEVITATE_GRENADE_SECONDS_DURATION = LEVITATE_GRENADE_SECONDS_DURATION_CONFIG.get();
     	LEVITATE_GRENADE_BLAST_RADIUS = LEVITATE_GRENADE_BLAST_RADIUS_CONFIG.get();
+    	
+    	EVOKERS_TOME_COOLDOWN = EVOKERS_TOME_COOLDOWN_CONFIG.get();
     }
 }
