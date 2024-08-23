@@ -12,12 +12,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
-public class NetherGodStaffItem extends Item {
+public class InfernalScepterStaffItem extends Item {
 
     private static final int COOLDOWN_TICKS = 40; // 2 seconds (20 ticks per second)
     private static final int SKULLS_TO_SHOOT = 4; // Number of Wither Skulls to shoot
 
-    public NetherGodStaffItem() {
+    public InfernalScepterStaffItem() {
         super(createProperties());
     }
     

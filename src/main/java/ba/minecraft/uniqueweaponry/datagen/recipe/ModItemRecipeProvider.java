@@ -112,7 +112,7 @@ public final class ModItemRecipeProvider extends RecipeProvider {
     	.unlockedBy(getHasName(Items.NETHER_STAR), has(Items.WITHER_SKELETON_SKULL))
     	.save(recipeOutput);
 		
-		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, StaffItems.NETHER_GOD.get(), 1)
+		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, StaffItems.INFERNAL_SCEPTER.get(), 1)
     	.define('I', Items.NETHERITE_INGOT)
     	.define('N', Items.NETHER_STAR)
     	.define('W', StaffItems.WITHER_STAFF.get())
