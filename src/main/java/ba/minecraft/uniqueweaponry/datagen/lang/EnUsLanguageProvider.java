@@ -58,7 +58,7 @@ public final class EnUsLanguageProvider extends LanguageProvider {
 	}
 	
 	private void addStaffItems() {
-		add(StaffItems.WITHER_STAFF.get(), "Wither Staff");
+		add(StaffItems.SKULLCASTER.get(), "Skullcaster");
 		add(StaffItems.INFERNAL_SCEPTER.get(), "Infernal Scepter");
 	}
 	

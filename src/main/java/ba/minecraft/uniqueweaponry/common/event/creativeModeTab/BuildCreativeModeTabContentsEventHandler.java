@@ -29,7 +29,8 @@ public final class BuildCreativeModeTabContentsEventHandler {
 			event.accept(GrenadeItems.LEVITATE_GRENADE);
 			event.accept(GunItems.WEBBER);
 			event.accept(BookItems.EVOKERS_TOME);
-			event.accept(StaffItems.WITHER_STAFF);
+			event.accept(StaffItems.SKULLCASTER);
+			event.accept(StaffItems.INFERNAL_SCEPTER);
 		}
 
 	}

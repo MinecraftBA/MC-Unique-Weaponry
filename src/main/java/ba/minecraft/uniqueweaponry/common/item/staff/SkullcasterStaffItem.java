@@ -1,5 +1,6 @@
 package ba.minecraft.uniqueweaponry.common.item.staff;
 
+import ba.minecraft.uniqueweaponry.common.core.UniqueWeaponryModConfig;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -9,21 +10,23 @@ import net.minecraft.world.entity.projectile.WitherSkull;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.Item.Properties;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
-public class WitherStaffStaffItem extends Item {
+public class SkullcasterStaffItem extends Item {
 
-    private static final int COOLDOWN_TICKS = 20; // 2 seconds (20 ticks per second)
+    private static final int COOLDOWN_TICKS = UniqueWeaponryModConfig.SKULLCASTER_COOLDOWN; // 2 seconds (20 ticks per second)
 
-    public WitherStaffStaffItem() {
+    public SkullcasterStaffItem() {
         super(createProperties());
     }
     
     private static Properties createProperties() {
         Properties properties = new Properties();
         properties.stacksTo(1);
+        properties.rarity(Rarity.RARE);
         return properties;
     }
     

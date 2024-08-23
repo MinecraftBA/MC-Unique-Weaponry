@@ -101,7 +101,7 @@ public final class ModItemRecipeProvider extends RecipeProvider {
     	.unlockedBy(getHasName(Items.TOTEM_OF_UNDYING), has(Items.TOTEM_OF_UNDYING))
     	.save(recipeOutput);
 		
-		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, StaffItems.WITHER_STAFF.get(), 1)
+		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, StaffItems.SKULLCASTER.get(), 1)
     	.define('W', Items.WITHER_SKELETON_SKULL)
     	.define('N', Items.NETHER_STAR)
     	.define('B', Items.BONE)
@@ -115,11 +115,11 @@ public final class ModItemRecipeProvider extends RecipeProvider {
 		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, StaffItems.INFERNAL_SCEPTER.get(), 1)
     	.define('I', Items.NETHERITE_INGOT)
     	.define('N', Items.NETHER_STAR)
-    	.define('W', StaffItems.WITHER_STAFF.get())
+    	.define('W', StaffItems.SKULLCASTER.get())
     	.pattern("INI")
     	.pattern("NWN")
     	.pattern("INI")
-    	.unlockedBy(getHasName(Items.NETHERITE_INGOT), has(StaffItems.WITHER_STAFF.get()))
+    	.unlockedBy(getHasName(Items.NETHERITE_INGOT), has(StaffItems.SKULLCASTER.get()))
     	.save(recipeOutput);
 	}
 	
