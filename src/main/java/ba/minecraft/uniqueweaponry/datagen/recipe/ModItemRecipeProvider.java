@@ -13,6 +13,7 @@ import java.util.concurrent.CompletableFuture;
 import ba.minecraft.uniqueweaponry.common.item.BookItems;
 import ba.minecraft.uniqueweaponry.common.item.GrenadeItems;
 import ba.minecraft.uniqueweaponry.common.item.GunItems;
+import ba.minecraft.uniqueweaponry.common.item.StaffItems;
 
 public final class ModItemRecipeProvider extends RecipeProvider {
 	
@@ -98,6 +99,27 @@ public final class ModItemRecipeProvider extends RecipeProvider {
     	.pattern("EAB")
     	.pattern(" T ")
     	.unlockedBy(getHasName(Items.TOTEM_OF_UNDYING), has(Items.TOTEM_OF_UNDYING))
+    	.save(recipeOutput);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, StaffItems.WITHER_STAFF.get(), 1)
+    	.define('W', Items.WITHER_SKELETON_SKULL)
+    	.define('N', Items.NETHER_STAR)
+    	.define('B', Items.BONE)
+    	.define('E', Items.NETHER_BRICK)
+    	.pattern(" W ")
+    	.pattern("BNB")
+    	.pattern(" E ")
+    	.unlockedBy(getHasName(Items.NETHER_STAR), has(Items.WITHER_SKELETON_SKULL))
+    	.save(recipeOutput);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, StaffItems.NETHER_GOD.get(), 1)
+    	.define('I', Items.NETHERITE_INGOT)
+    	.define('N', Items.NETHER_STAR)
+    	.define('W', StaffItems.WITHER_STAFF.get())
+    	.pattern("INI")
+    	.pattern("NWN")
+    	.pattern("INI")
+    	.unlockedBy(getHasName(Items.NETHERITE_INGOT), has(StaffItems.WITHER_STAFF.get()))
     	.save(recipeOutput);
 	}
 	
