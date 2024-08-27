@@ -4,8 +4,10 @@ import com.mojang.logging.LogUtils;
 
 import ba.minecraft.uniqueweaponry.common.entity.GrenadeEntityTypes;
 import ba.minecraft.uniqueweaponry.common.entity.ProjectileEntityTypes;
+import ba.minecraft.uniqueweaponry.common.item.BookItems;
 import ba.minecraft.uniqueweaponry.common.item.GrenadeItems;
 import ba.minecraft.uniqueweaponry.common.item.GunItems;
+import ba.minecraft.uniqueweaponry.common.item.StaffItems;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartedEvent;
@@ -36,6 +38,8 @@ public class UniqueWeaponryMod
         // Registration of mod provided items.
         GrenadeItems.REGISTRY.register(modEventBus);
         GunItems.REGISTRY.register(modEventBus);
+        BookItems.REGISTRY.register(modEventBus);
+        StaffItems.REGISTRY.register(modEventBus);
         
         // Registration of mod provided entity types
     	GrenadeEntityTypes.REGISTRY.register(modEventBus);

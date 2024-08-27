@@ -3,8 +3,10 @@ package ba.minecraft.uniqueweaponry.datagen.lang;
 import ba.minecraft.uniqueweaponry.common.core.UniqueWeaponryMod;
 import ba.minecraft.uniqueweaponry.common.entity.GrenadeEntityTypes;
 import ba.minecraft.uniqueweaponry.common.entity.ProjectileEntityTypes;
+import ba.minecraft.uniqueweaponry.common.item.BookItems;
 import ba.minecraft.uniqueweaponry.common.item.GrenadeItems;
 import ba.minecraft.uniqueweaponry.common.item.GunItems;
+import ba.minecraft.uniqueweaponry.common.item.StaffItems;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.LanguageProvider;
 
@@ -21,6 +23,8 @@ public final class EnUsLanguageProvider extends LanguageProvider {
 		addGrenadeEntities();
 		addGunItems();
 		addProjectileEntities();
+		addBookItems();
+		addStaffItems();
 		
 	}
 
@@ -47,6 +51,15 @@ public final class EnUsLanguageProvider extends LanguageProvider {
 	
 	private void addProjectileEntities() {
 		add(ProjectileEntityTypes.COBWEB.get(), "Cobweb");
+	}
+	
+	private void addBookItems() {
+		add(BookItems.EVOKERS_TOME.get(), "Evoker's Tome");
+	}
+	
+	private void addStaffItems() {
+		add(StaffItems.SKULLCASTER.get(), "Skullcaster");
+		add(StaffItems.INFERNAL_SCEPTER.get(), "Infernal Scepter");
 	}
 	
 }

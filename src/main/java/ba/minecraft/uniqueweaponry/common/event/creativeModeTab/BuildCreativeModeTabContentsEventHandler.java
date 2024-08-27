@@ -8,8 +8,10 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import ba.minecraft.uniqueweaponry.common.core.UniqueWeaponryMod;
+import ba.minecraft.uniqueweaponry.common.item.BookItems;
 import ba.minecraft.uniqueweaponry.common.item.GrenadeItems;
 import ba.minecraft.uniqueweaponry.common.item.GunItems;
+import ba.minecraft.uniqueweaponry.common.item.StaffItems;
 
 @EventBusSubscriber(modid = UniqueWeaponryMod.MODID, bus = Bus.MOD)
 public final class BuildCreativeModeTabContentsEventHandler {
@@ -26,6 +28,9 @@ public final class BuildCreativeModeTabContentsEventHandler {
 			event.accept(GrenadeItems.POISON_GRENADE);
 			event.accept(GrenadeItems.LEVITATE_GRENADE);
 			event.accept(GunItems.WEBBER);
+			event.accept(BookItems.EVOKERS_TOME);
+			event.accept(StaffItems.SKULLCASTER);
+			event.accept(StaffItems.INFERNAL_SCEPTER);
 		}
 
 	}
