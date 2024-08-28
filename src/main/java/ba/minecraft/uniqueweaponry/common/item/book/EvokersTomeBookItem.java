@@ -26,43 +26,46 @@ public class EvokersTomeBookItem extends Item {
     }
     
     @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player user, InteractionHand usedHand) {
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
 
         // Get reference to a tome that was used.
-        ItemStack tome = user.getItemInHand(usedHand);
+        ItemStack tome = player.getItemInHand(usedHand);
+        
+        // IF: Code is executing on client side.
+        if(level.isClientSide) {
+     
+        	// Do nothing.
+            return InteractionResultHolder.sidedSuccess(tome, true);
+        }
         
         // Play casting sound.
-        level.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.EVOKER_CAST_SPELL, SoundSource.NEUTRAL, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
+        level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.EVOKER_CAST_SPELL, SoundSource.NEUTRAL, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
         
-        // If: Code is executing on server side.
-        if (!level.isClientSide) {
+        // Get the player's look vector
+        Vec3 lookVec = player.getLookAngle();
+        
+        // Position offset multiplier for each fang
+        double distanceBetweenFangs = 1.0; // Adjust this to control the spacing between the fangs
 
-            // Get the player's look vector
-            Vec3 lookVec = user.getLookAngle();
+        for (int i = 0; i < 7; i++) {
+            // Calculate the position for each fang in a straight line
+            double offsetX = player.getX() + lookVec.x * (i + 1) * distanceBetweenFangs;
+            double offsetY = player.getY() + 0.5;  // Lift the fangs a bit off the ground
+            double offsetZ = player.getZ() + lookVec.z * (i + 1) * distanceBetweenFangs;
             
-            // Position offset multiplier for each fang
-            double distanceBetweenFangs = 1.0; // Adjust this to control the spacing between the fangs
-
-            for (int i = 0; i < 7; i++) {
-                // Calculate the position for each fang in a straight line
-                double offsetX = user.getX() + lookVec.x * (i + 1) * distanceBetweenFangs;
-                double offsetY = user.getY() + 0.5;  // Lift the fangs a bit off the ground
-                double offsetZ = user.getZ() + lookVec.z * (i + 1) * distanceBetweenFangs;
-                
-                // Create instance of EvokerFangs
-                EvokerFangs fang = new EvokerFangs(level, offsetX, offsetY, offsetZ, user.getYRot(), i, user);
-                fang.setOwner(user); // Set the player as the owner of the fangs
-                
-                // Add it to the level
-                level.addFreshEntity(fang);
-            }
+            // Create instance of EvokerFangs
+            EvokerFangs fang = new EvokerFangs(level, offsetX, offsetY, offsetZ, player.getYRot(), i, player);
+            fang.setOwner(player); // Set the player as the owner of the fangs
             
-            // Set a cooldown of 3 seconds (60 ticks)
-            user.getCooldowns().addCooldown(this, UniqueWeaponryModConfig.EVOKERS_TOME_COOLDOWN);
+            // Add it to the level
+            level.addFreshEntity(fang);
         }
+        
+        // Set a cooldown of 3 seconds (60 ticks)
+        player.getCooldowns().addCooldown(this, UniqueWeaponryModConfig.EVOKERS_TOME_COOLDOWN * 20);
               
         // Award stat that item is used.
-        user.awardStat(Stats.ITEM_USED.get(this));
+        player.awardStat(Stats.ITEM_USED.get(this));
 
         // Indicate that use was successful.
         return InteractionResultHolder.sidedSuccess(tome, level.isClientSide());

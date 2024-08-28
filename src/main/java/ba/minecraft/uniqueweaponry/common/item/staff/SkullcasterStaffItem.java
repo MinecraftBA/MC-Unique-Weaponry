@@ -2,22 +2,20 @@ package ba.minecraft.uniqueweaponry.common.item.staff;
 
 import ba.minecraft.uniqueweaponry.common.core.UniqueWeaponryModConfig;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.projectile.WitherSkull;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemCooldowns;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.Item.Properties;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
 public class SkullcasterStaffItem extends Item {
-
-    private static final int COOLDOWN_TICKS = UniqueWeaponryModConfig.SKULLCASTER_COOLDOWN; // 2 seconds (20 ticks per second)
 
     public SkullcasterStaffItem() {
         super(createProperties());
@@ -30,46 +28,62 @@ public class SkullcasterStaffItem extends Item {
         return properties;
     }
     
-
     @Override
-    public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
-        ItemStack itemstack = player.getItemInHand(hand);
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
 
-        if (!world.isClientSide) {
-            if (!player.getCooldowns().isOnCooldown(this)) {
-                // Get the player's eye position to shoot from the eyes
-                Vec3 eyePosition = player.getEyePosition(1.0F);
+    	// Get reference to item in hand.
+    	ItemStack itemstack = player.getItemInHand(hand);
 
-                // Base direction where the player is looking
-                Vec3 baseDirection = player.getLookAngle();
+    	// IF: Code is executing on client side.
+    	if(level.isClientSide) {
+    		
+    		// Do nothing.
+            return InteractionResultHolder.sidedSuccess(itemstack, true);
+    	}
+    	
+    	// Get reference to cooldowns for player.
+    	ItemCooldowns cooldowns = player.getCooldowns();
+    	
+    	// IF: Item is on cooldown.
+    	if(cooldowns.isOnCooldown(this)) {
 
-                // Shoot multiple Wither Skulls in slightly different directions
-                    // Create a new Wither Skull entity
-                    WitherSkull witherSkull = new WitherSkull(world, player, baseDirection);
-                    witherSkull.setPos(eyePosition.x, eyePosition.y, eyePosition.z);
-                    
-                    Vec3 direction = player.getLookAngle();
-                    // Adjust direction for each skull
+    		// Do nothing.
+            return InteractionResultHolder.sidedSuccess(itemstack, true);
+    	}
+    	
+        // Get the player's eye position to shoot from the eyes
+        Vec3 eyePosition = player.getEyePosition(1.0F);
 
+        // Base direction where the player is looking
+        Vec3 baseDirection = player.getLookAngle();
 
-                    // Set the direction of the Wither Skull
-                    witherSkull.shoot(direction.x, direction.y, direction.z, 1.5F, 0.0F);
+        // Create a new Wither Skull entity
+        WitherSkull witherSkull = new WitherSkull(level, player, baseDirection);
+        witherSkull.setPos(eyePosition.x, eyePosition.y, eyePosition.z);
+        witherSkull.setOwner(player);
 
-                    // Ensure the Wither Skull is invulnerable (blue and more powerful)
-                    
-                    // Add the Wither Skull to the world
-                    world.addFreshEntity(witherSkull);
+        // Get direction at which player is looking.
+        Vec3 direction = player.getLookAngle();
 
-                // Play sound and spawn particle effect
-                world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.WITHER_SHOOT, player.getSoundSource(), 1.0F, 1.0F);
-                ((ServerPlayer) player).level().addParticle(ParticleTypes.SMOKE, eyePosition.x, eyePosition.y, eyePosition.z, 10, 0.1D, 0.1D);
+        // Set the direction of the Wither Skull
+        witherSkull.shoot(direction.x, direction.y, direction.z, 1.5F, 0.0F);
 
-                // Apply the cooldown to the item
-                player.getCooldowns().addCooldown(this, COOLDOWN_TICKS);
-            }
-        }
+        // Add the Wither Skull to the world
+        level.addFreshEntity(witherSkull);
 
-        return InteractionResultHolder.sidedSuccess(itemstack, world.isClientSide());
+        // Play sound and spawn particle effect
+        level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.WITHER_SHOOT, player.getSoundSource(), 1.0F, 1.0F);
+
+        // Add particle at position of casting.
+        level.addParticle(ParticleTypes.SMOKE, eyePosition.x, eyePosition.y, eyePosition.z, 10, 0.1D, 0.1D);
+
+        // Apply the cooldown to the item
+        cooldowns.addCooldown(this, UniqueWeaponryModConfig.SKULLCASTER_COOLDOWN * 20);
+
+        // Award stat that item is used.
+        player.awardStat(Stats.ITEM_USED.get(this));
+
+        return InteractionResultHolder.sidedSuccess(itemstack, false);
     }
 
     @Override

@@ -32,7 +32,7 @@ public class UniqueWeaponryModConfig
     private static final ForgeConfigSpec.IntValue SKULLCASTER_COOLDOWN_CONFIG;
     
     private static final ForgeConfigSpec.IntValue INFERNAL_SCEPTER_COOLDOWN_CONFIG;
-    private static final ForgeConfigSpec.IntValue INFERNAL_SCEPTER_SKULL_CONFIG;
+    private static final ForgeConfigSpec.IntValue INFERNAL_SCEPTER_SKULL_COUNT_CONFIG;
 
     public static int FLASH_GRENADE_SECONDS_DURATION;
     public static int FLASH_GRENADE_BLAST_RADIUS;
@@ -53,7 +53,7 @@ public class UniqueWeaponryModConfig
     public static int SKULLCASTER_COOLDOWN;
     
     public static int INFERNAL_SCEPTER_COOLDOWN;
-    public static int INFERNAL_SCEPTER_SKULL;
+    public static int INFERNAL_SCEPTER_SKULL_COUNT;
     static 
     {
     	BUILDER.push("Configs for Unique Weaponry Mod");
@@ -90,17 +90,17 @@ public class UniqueWeaponryModConfig
     	LEVITATE_GRENADE_BLAST_RADIUS_CONFIG = BUILDER.comment("Defines radius in blocks of levitate grenade area of effect.")
 	            .defineInRange("Levitate Grenade blast radius", 16, 4, 64);
     	
-    	EVOKERS_TOME_COOLDOWN_CONFIG = BUILDER.comment("Defines cooldown in ticks of evokers tome use.")
-	            .defineInRange("Evokers Tome Cooldown. 20 ticks is 1 second", 40, 0, 300);
+    	EVOKERS_TOME_COOLDOWN_CONFIG = BUILDER.comment("Defines cooldown for usage of Evokers Tome.")
+	            .defineInRange("Evokers Tome cooldown", 2, 0, 60);
     	
-    	SKULLCASTER_COOLDOWN_CONFIG = BUILDER.comment("Defines cooldown in ticks of skullcaster use.")
-	            .defineInRange("Skullcaster Cooldown. 20 ticks is 1 second", 20, 0, 160);
+    	SKULLCASTER_COOLDOWN_CONFIG = BUILDER.comment("Defines cooldown for usage of Skullcaster.")
+	            .defineInRange("Skullcaster Cooldown", 2, 0, 60);
     	
-    	INFERNAL_SCEPTER_COOLDOWN_CONFIG = BUILDER.comment("Defines cooldown in ticks of infernal sce[ter use.")
-	            .defineInRange("Skullcaster Cooldown. 20 ticks is 1 second", 40, 0, 300);
+    	INFERNAL_SCEPTER_COOLDOWN_CONFIG = BUILDER.comment("Defines cooldown for usage of Infernal Scepter.")
+	            .defineInRange("Infernal Scepter cooldown", 3, 0, 60);
     	
-    	INFERNAL_SCEPTER_SKULL_CONFIG = BUILDER.comment("Defines how many skulls does Infernal Scepter shoot.")
-	            .defineInRange("Infernal Scepter Skull Shooted", 4, 1, 50);
+    	INFERNAL_SCEPTER_SKULL_COUNT_CONFIG = BUILDER.comment("Defines number of skulls shot by Infernal Scepter.")
+	            .defineInRange("Infernal Scepter skull count", 3, 1, 15);
     	
     	SPEC = BUILDER.build();
     }
@@ -128,7 +128,6 @@ public class UniqueWeaponryModConfig
     	SKULLCASTER_COOLDOWN = SKULLCASTER_COOLDOWN_CONFIG.get();
     	
     	INFERNAL_SCEPTER_COOLDOWN = INFERNAL_SCEPTER_COOLDOWN_CONFIG.get();
-    	INFERNAL_SCEPTER_SKULL = INFERNAL_SCEPTER_SKULL_CONFIG.get();
-    	
+    	INFERNAL_SCEPTER_SKULL_COUNT = INFERNAL_SCEPTER_SKULL_COUNT_CONFIG.get();
     }
 }
