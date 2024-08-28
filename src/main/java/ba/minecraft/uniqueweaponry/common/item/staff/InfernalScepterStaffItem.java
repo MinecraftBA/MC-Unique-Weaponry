@@ -67,7 +67,7 @@ public class InfernalScepterStaffItem extends Item {
 
                 // Play sound and spawn particle effect
                 world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.WITHER_SHOOT, player.getSoundSource(), 1.0F, 1.0F);
-                ((ServerPlayer) player).level().addParticle(ParticleTypes.SMOKE, eyePosition.x, eyePosition.y, eyePosition.z, 10, 0.1D, 0.1D);
+                ((ServerPlayer) player).level().addParticle(ParticleTypes.ASH, eyePosition.x, eyePosition.y, eyePosition.z, 10, 0.1D, 0.1D);
 
                 // Apply the cooldown to the item
                 player.getCooldowns().addCooldown(this, COOLDOWN_TICKS);
