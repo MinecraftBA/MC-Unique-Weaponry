@@ -30,7 +30,7 @@ public abstract class BaseGrenadeItem<T extends BaseGrenadeEntity> extends Item 
 
 	public abstract T CreateEntity(LivingEntity thrower, Level level);
 	
-	public abstract T CreateEntity(double x, double y, double z, Level level);
+	public abstract T CreateEntity(double x, double y, double z, Level level, ItemStack itemStack);
 
 	@Override
 	public InteractionResult use(Level level, Player thrower, InteractionHand usedHand) {
@@ -76,10 +76,7 @@ public abstract class BaseGrenadeItem<T extends BaseGrenadeEntity> extends Item 
 	public Projectile asProjectile(Level level, Position position, ItemStack itemStack, Direction direction) {
 
 		// Create instance of grenade entity.
-		T grenade = CreateEntity(position.x(), position.y(), position.z(), level);
-
-		// Set item stack from which grenade was created.
-		grenade.setItem(itemStack);
+		T grenade = CreateEntity(position.x(), position.y(), position.z(), level, itemStack);
 		
 		return grenade;
 	}

@@ -15,6 +15,7 @@ import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.EntityType.Builder;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
 
@@ -44,8 +45,8 @@ public class IgniteGrenadeEntity extends BaseGrenadeEntity {
 		super(GrenadeEntityTypes.IGNITE_GRENADE.get(), thrower, level);
 	}
 	
-	public IgniteGrenadeEntity(double x, double y, double z, Level level) {
-		super(GrenadeEntityTypes.IGNITE_GRENADE.get(), x, y, z, level);
+	public IgniteGrenadeEntity(double x, double y, double z, Level level, ItemStack itemStack) {
+		super(GrenadeEntityTypes.IGNITE_GRENADE.get(), x, y, z, level, itemStack);
 	}
 
 	public IgniteGrenadeEntity(Level level) {

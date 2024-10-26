@@ -10,6 +10,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -27,8 +28,8 @@ public abstract class BaseGrenadeEntity extends ThrowableItemProjectile {
 		super(entityType, shooter, level);
 	}
 	
-    public BaseGrenadeEntity(EntityType<? extends ThrowableItemProjectile> entityType, double x, double y, double z, Level level) {
-        super(entityType, x, y, z, level);
+    public BaseGrenadeEntity(EntityType<? extends ThrowableItemProjectile> entityType, double x, double y, double z, Level level, ItemStack itemStack) {
+        super(entityType, x, y, z, level, itemStack);
     }
 	
 	/**

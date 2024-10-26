@@ -17,6 +17,7 @@ import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.EntityType.Builder;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
 
@@ -46,8 +47,8 @@ public class PoisonGrenadeEntity  extends BaseGrenadeEntity {
 		super(GrenadeEntityTypes.POISON_GRENADE.get(), thrower, level);
 	}
 	
-	public PoisonGrenadeEntity(double x, double y, double z, Level level) {
-		super(GrenadeEntityTypes.POISON_GRENADE.get(), x, y, z, level);
+	public PoisonGrenadeEntity(double x, double y, double z, Level level, ItemStack itemStack) {
+		super(GrenadeEntityTypes.POISON_GRENADE.get(), x, y, z, level, itemStack);
 	}
 
 	public PoisonGrenadeEntity(Level level) {
