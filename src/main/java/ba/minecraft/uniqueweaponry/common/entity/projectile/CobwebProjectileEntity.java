@@ -2,9 +2,11 @@ package ba.minecraft.uniqueweaponry.common.entity.projectile;
 
 import ba.minecraft.uniqueweaponry.common.entity.ProjectileEntityTypes;
 import ba.minecraft.uniqueweaponry.common.entity.projectile.CobwebProjectileEntity;
+import ba.minecraft.uniqueweaponry.common.helpers.ModResourceKey;
 import ba.minecraft.uniqueweaponry.common.helpers.ModResourceLocation;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -23,8 +25,8 @@ import net.minecraft.world.phys.EntityHitResult;
 
 public class CobwebProjectileEntity extends ThrowableItemProjectile{
 	
-	private static final ResourceLocation ENTITY_LOC = ModResourceLocation.Create("cobweb");
-	
+	private static final ResourceKey<EntityType<?>> ENTITY_RES_KEY = ModResourceKey.createEntityTypeKey("flash_grenade");
+
 	public static EntityType<CobwebProjectileEntity> createType() {
 
 		Builder<CobwebProjectileEntity> builder = Builder.of(CobwebProjectileEntity::new, MobCategory.MISC);
@@ -33,9 +35,7 @@ public class CobwebProjectileEntity extends ThrowableItemProjectile{
 		builder.clientTrackingRange(20);
 		builder.updateInterval(20);
 
-		String id = ENTITY_LOC.toString();
-
-		EntityType<CobwebProjectileEntity> entityType = builder.build(id);
+		EntityType<CobwebProjectileEntity> entityType = builder.build(ENTITY_RES_KEY);
 
 		return entityType;
 	}

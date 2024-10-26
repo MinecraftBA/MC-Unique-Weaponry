@@ -5,9 +5,9 @@ import java.util.List;
 import ba.minecraft.uniqueweaponry.common.core.UniqueWeaponryModConfig;
 import ba.minecraft.uniqueweaponry.common.entity.GrenadeEntityTypes;
 import ba.minecraft.uniqueweaponry.common.entity.grenade.base.BaseGrenadeEntity;
-import ba.minecraft.uniqueweaponry.common.helpers.ModResourceLocation;
+import ba.minecraft.uniqueweaponry.common.helpers.ModResourceKey;
 import ba.minecraft.uniqueweaponry.common.item.GrenadeItems;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -23,7 +23,7 @@ import net.minecraft.world.phys.HitResult;
 public class FlashGrenadeEntity extends BaseGrenadeEntity {
 
 	// Defines that this entity will be registered as uniqueweaponry:flash_grenade
-	private static final ResourceLocation ENTITY_LOC = ModResourceLocation.Create("flash_grenade");
+	private static final ResourceKey<EntityType<?>> ENTITY_RES_KEY = ModResourceKey.createEntityTypeKey("flash_grenade");
 
 	public static EntityType<FlashGrenadeEntity> createType() {
 
@@ -32,10 +32,8 @@ public class FlashGrenadeEntity extends BaseGrenadeEntity {
 		builder.sized(0.5F, 0.5F);
 		builder.clientTrackingRange(20);
 		builder.updateInterval(20);
-
-		String id = ENTITY_LOC.toString();
-
-		EntityType<FlashGrenadeEntity> entityType = builder.build(id);
+		
+		EntityType<FlashGrenadeEntity> entityType = builder.build(ENTITY_RES_KEY);
 
 		return entityType;
 	}
