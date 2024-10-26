@@ -28,41 +28,35 @@ public class WebberGunItem extends Item {
 	@Override
 	public InteractionResult use(Level level, Player shooter, InteractionHand usedHand) {
 
-		boolean hasCobWeb = false;
+		// Get reference to shooter inventory.
+		Inventory inventory = shooter.getInventory();
+
+		ItemStack cobWebItemStack = null;
 		
-		// IF: It is creative mode.
-		if(shooter.getAbilities().instabuild) {
+		// Iterate through all items in inventory.
+		for(ItemStack itemStack : inventory.items) {
 			
-			// Cobweb should not be required.
-			hasCobWeb = true;
+			// IF: Item stack is stack of cobweb.
+			if(itemStack.is(Items.COBWEB)){
 
-		} 
-		else {  // ELSE: It is survival mode.
+				// Save reference to found CobWeb item stack.
+				cobWebItemStack = itemStack;
 
-			// Get reference to shooter inventory.
-			Inventory inventory = shooter.getInventory();
-
-			// Iterate through all items in inventory.
-			for(ItemStack itemStack : inventory.items) {
-				
-				// IF: Item stack is stack of cobweb.
-				if(itemStack.is(Items.COBWEB)){
+				// IF: It is not creative mode.
+				if(!shooter.getAbilities().instabuild) {
 					
 					// Reduce quantity of stack by 1.
 					itemStack.shrink(1);
-					
-					// We set variable to true to indicate that cobweb was found in inventory.
-					hasCobWeb = true;
-					
-					// Break the for loop.
-					break;
-				}
-			}
 
+				} 
+				
+				// Break the for loop.
+				break;
+			}
 		}
 		
 		// IF: Cobweb was not found.
-		if(!hasCobWeb) {
+		if(cobWebItemStack == null) {
 			// Indicate that use was not successful.
 			return InteractionResult.FAIL;
 		}
@@ -74,7 +68,7 @@ public class WebberGunItem extends Item {
 		if (!level.isClientSide) {
 
 			// Create instance of grenade entity.
-			CobwebProjectileEntity cobweb = new CobwebProjectileEntity(level, shooter);
+			CobwebProjectileEntity cobweb = new CobwebProjectileEntity(level, shooter, cobWebItemStack);
 			
 			// Shoot grenade.
 			cobweb.shootFromRotation(shooter, shooter.getXRot(), shooter.getYRot(), 0.0F, 4.0F, 0.0F);
