@@ -5,7 +5,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -26,10 +26,7 @@ public class WebberGunItem extends Item {
 	}
 
 	@Override
-	public InteractionResultHolder<ItemStack> use(Level level, Player shooter, InteractionHand usedHand) {
-
-		// Get reference to a gun that was used.
-		ItemStack gun = shooter.getItemInHand(usedHand);
+	public InteractionResult use(Level level, Player shooter, InteractionHand usedHand) {
 
 		boolean hasCobWeb = false;
 		
@@ -67,7 +64,7 @@ public class WebberGunItem extends Item {
 		// IF: Cobweb was not found.
 		if(!hasCobWeb) {
 			// Indicate that use was not successful.
-			return InteractionResultHolder.fail(gun);
+			return InteractionResult.FAIL;
 		}
 		
 		// Play throwing sound.
@@ -90,7 +87,7 @@ public class WebberGunItem extends Item {
 		shooter.awardStat(Stats.ITEM_USED.get(this));
 
 		// Incidate that use was successful.
-		return InteractionResultHolder.sidedSuccess(gun, level.isClientSide());
+		return InteractionResult.SUCCESS;
 	}
 	
 	

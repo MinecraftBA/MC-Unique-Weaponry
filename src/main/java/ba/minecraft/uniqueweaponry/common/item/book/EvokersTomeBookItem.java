@@ -5,7 +5,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.EvokerFangs;
 import net.minecraft.world.item.Item;
@@ -25,8 +25,8 @@ public class EvokersTomeBookItem extends Item {
         return properties;
     }
     
-    @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
+	@Override
+    public InteractionResult use(Level level, Player player, InteractionHand usedHand) {
 
         // Get reference to a tome that was used.
         ItemStack tome = player.getItemInHand(usedHand);
@@ -35,7 +35,7 @@ public class EvokersTomeBookItem extends Item {
         if(level.isClientSide) {
      
         	// Do nothing.
-            return InteractionResultHolder.sidedSuccess(tome, true);
+            return InteractionResult.SUCCESS;
         }
         
         // Play casting sound.
@@ -62,12 +62,12 @@ public class EvokersTomeBookItem extends Item {
         }
         
         // Set a cooldown of 3 seconds (60 ticks)
-        player.getCooldowns().addCooldown(this, UniqueWeaponryModConfig.EVOKERS_TOME_COOLDOWN * 20);
+        player.getCooldowns().addCooldown(tome, UniqueWeaponryModConfig.EVOKERS_TOME_COOLDOWN * 20);
               
         // Award stat that item is used.
         player.awardStat(Stats.ITEM_USED.get(this));
 
         // Indicate that use was successful.
-        return InteractionResultHolder.sidedSuccess(tome, level.isClientSide());
+        return InteractionResult.SUCCESS_SERVER;
     }
 }

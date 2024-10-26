@@ -5,7 +5,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.projectile.WitherSkull;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -29,26 +29,26 @@ public class SkullcasterStaffItem extends Item {
     }
     
     @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+    public InteractionResult use(Level level, Player player, InteractionHand hand) {
 
     	// Get reference to item in hand.
-    	ItemStack itemstack = player.getItemInHand(hand);
+    	ItemStack itemStack = player.getItemInHand(hand);
 
     	// IF: Code is executing on client side.
     	if(level.isClientSide) {
     		
     		// Do nothing.
-            return InteractionResultHolder.sidedSuccess(itemstack, true);
+            return InteractionResult.SUCCESS;
     	}
     	
     	// Get reference to cooldowns for player.
     	ItemCooldowns cooldowns = player.getCooldowns();
     	
     	// IF: Item is on cooldown.
-    	if(cooldowns.isOnCooldown(this)) {
+    	if(cooldowns.isOnCooldown(itemStack)) {
 
     		// Do nothing.
-            return InteractionResultHolder.sidedSuccess(itemstack, true);
+            return InteractionResult.SUCCESS_SERVER;
     	}
     	
         // Get the player's eye position to shoot from the eyes
@@ -78,12 +78,12 @@ public class SkullcasterStaffItem extends Item {
         level.addParticle(ParticleTypes.SMOKE, eyePosition.x, eyePosition.y, eyePosition.z, 10, 0.1D, 0.1D);
 
         // Apply the cooldown to the item
-        cooldowns.addCooldown(this, UniqueWeaponryModConfig.SKULLCASTER_COOLDOWN * 20);
+        cooldowns.addCooldown(itemStack, UniqueWeaponryModConfig.SKULLCASTER_COOLDOWN * 20);
 
         // Award stat that item is used.
         player.awardStat(Stats.ITEM_USED.get(this));
 
-        return InteractionResultHolder.sidedSuccess(itemstack, false);
+        return InteractionResult.SUCCESS_SERVER;
     }
 
     @Override

@@ -7,7 +7,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -33,7 +33,7 @@ public abstract class BaseGrenadeItem<T extends BaseGrenadeEntity> extends Item 
 	public abstract T CreateEntity(double x, double y, double z, Level level);
 
 	@Override
-	public InteractionResultHolder<ItemStack> use(Level level, Player thrower, InteractionHand usedHand) {
+	public InteractionResult use(Level level, Player thrower, InteractionHand usedHand) {
 
 		// Get reference to grenade held in hand.
 		ItemStack itemStack = thrower.getItemInHand(usedHand);
@@ -69,7 +69,7 @@ public abstract class BaseGrenadeItem<T extends BaseGrenadeEntity> extends Item 
 		}
 
 		// Incidate that use was successful.
-		return InteractionResultHolder.sidedSuccess(itemStack, level.isClientSide());
+		return InteractionResult.SUCCESS;
 	}
 
 	@Override
