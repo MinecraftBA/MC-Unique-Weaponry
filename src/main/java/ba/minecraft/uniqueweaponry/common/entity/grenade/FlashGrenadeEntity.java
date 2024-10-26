@@ -43,8 +43,8 @@ public class FlashGrenadeEntity extends BaseGrenadeEntity {
 		super(entityType, level);
 	}
 
-	public FlashGrenadeEntity(LivingEntity thrower, Level level) {
-		super(GrenadeEntityTypes.FLASH_GRENADE.get(), thrower, level);
+	public FlashGrenadeEntity(LivingEntity thrower, Level level, ItemStack itemStack) {
+		super(GrenadeEntityTypes.FLASH_GRENADE.get(), thrower, level, itemStack);
 	}
 	
 	public FlashGrenadeEntity(double x, double y, double z, Level level, ItemStack itemStack) {

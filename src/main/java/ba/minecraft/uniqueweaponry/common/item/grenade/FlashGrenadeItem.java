@@ -9,8 +9,8 @@ import net.minecraft.world.level.Level;
 public class FlashGrenadeItem extends BaseGrenadeItem<FlashGrenadeEntity> {
 
 	@Override
-	public FlashGrenadeEntity CreateEntity(LivingEntity thrower, Level level) {
-		return new FlashGrenadeEntity(thrower, level);
+	public FlashGrenadeEntity CreateEntity(LivingEntity thrower, Level level, ItemStack itemStack) {
+		return new FlashGrenadeEntity(thrower, level, itemStack);
 	}
 
 	@Override

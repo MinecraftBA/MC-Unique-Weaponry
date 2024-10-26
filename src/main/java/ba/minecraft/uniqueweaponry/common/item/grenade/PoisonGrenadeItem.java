@@ -9,8 +9,8 @@ import net.minecraft.world.level.Level;
 public class PoisonGrenadeItem extends BaseGrenadeItem<PoisonGrenadeEntity>{
 
 	@Override
-	public PoisonGrenadeEntity CreateEntity(LivingEntity thrower, Level level) {
-		return new PoisonGrenadeEntity(thrower, level);
+	public PoisonGrenadeEntity CreateEntity(LivingEntity thrower, Level level, ItemStack itemStack) {
+		return new PoisonGrenadeEntity(thrower, level, itemStack);
 	}
 
 	@Override

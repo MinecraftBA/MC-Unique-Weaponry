@@ -24,7 +24,7 @@ import net.minecraft.world.phys.HitResult;
 public class LevitateGrenadeEntity extends BaseGrenadeEntity {
 
 	// Defines that this entity will be registered as uniqueweaponry:flash_grenade
-	private static final ResourceKey<EntityType<?>> ENTITY_RES_KEY = ModResourceKey.createEntityTypeKey("ignite_grenade");
+	private static final ResourceKey<EntityType<?>> ENTITY_RES_KEY = ModResourceKey.createEntityTypeKey("levitate_grenade");
 
 	public static EntityType<LevitateGrenadeEntity> createType() {
 
@@ -43,8 +43,8 @@ public class LevitateGrenadeEntity extends BaseGrenadeEntity {
 		super(entityType, level);
 	}
 
-	public LevitateGrenadeEntity(LivingEntity thrower, Level level) {
-		super(GrenadeEntityTypes.LEVITATE_GRENADE.get(), thrower, level);
+	public LevitateGrenadeEntity(LivingEntity thrower, Level level, ItemStack itemStack) {
+		super(GrenadeEntityTypes.LEVITATE_GRENADE.get(), thrower, level, itemStack);
 	}
 	
 	public LevitateGrenadeEntity(double x, double y, double z, Level level, ItemStack itemStack) {

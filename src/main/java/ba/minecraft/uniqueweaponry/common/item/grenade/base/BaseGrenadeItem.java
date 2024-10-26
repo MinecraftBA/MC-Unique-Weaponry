@@ -28,7 +28,7 @@ public abstract class BaseGrenadeItem<T extends BaseGrenadeEntity> extends Item 
 		return properties;
 	}
 
-	public abstract T CreateEntity(LivingEntity thrower, Level level);
+	public abstract T CreateEntity(LivingEntity thrower, Level level, ItemStack itemStack);
 	
 	public abstract T CreateEntity(double x, double y, double z, Level level, ItemStack itemStack);
 
@@ -46,7 +46,7 @@ public abstract class BaseGrenadeItem<T extends BaseGrenadeEntity> extends Item 
 		if (!level.isClientSide) {
 
 			// Create instance of grenade entity.
-			T grenade = CreateEntity(thrower, level);
+			T grenade = CreateEntity(thrower, level, itemStack);
 
 			// Set grenade item that is being thrown.
 			grenade.setItem(itemStack);

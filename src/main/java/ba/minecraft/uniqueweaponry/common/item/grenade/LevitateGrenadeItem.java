@@ -9,8 +9,8 @@ import net.minecraft.world.level.Level;
 public class LevitateGrenadeItem extends BaseGrenadeItem<LevitateGrenadeEntity> {
 
 	@Override
-	public LevitateGrenadeEntity CreateEntity(LivingEntity thrower, Level level) {
-		return new LevitateGrenadeEntity(thrower, level);
+	public LevitateGrenadeEntity CreateEntity(LivingEntity thrower, Level level, ItemStack itemStack) {
+		return new LevitateGrenadeEntity(thrower, level, itemStack);
 	}
 
 	@Override

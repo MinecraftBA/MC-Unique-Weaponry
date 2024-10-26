@@ -3,11 +3,9 @@ package ba.minecraft.uniqueweaponry.common.entity.projectile;
 import ba.minecraft.uniqueweaponry.common.entity.ProjectileEntityTypes;
 import ba.minecraft.uniqueweaponry.common.entity.projectile.CobwebProjectileEntity;
 import ba.minecraft.uniqueweaponry.common.helpers.ModResourceKey;
-import ba.minecraft.uniqueweaponry.common.helpers.ModResourceLocation;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -15,6 +13,7 @@ import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.EntityType.Builder;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -25,7 +24,7 @@ import net.minecraft.world.phys.EntityHitResult;
 
 public class CobwebProjectileEntity extends ThrowableItemProjectile{
 	
-	private static final ResourceKey<EntityType<?>> ENTITY_RES_KEY = ModResourceKey.createEntityTypeKey("flash_grenade");
+	private static final ResourceKey<EntityType<?>> ENTITY_RES_KEY = ModResourceKey.createEntityTypeKey("cobweb");
 
 	public static EntityType<CobwebProjectileEntity> createType() {
 
@@ -44,8 +43,8 @@ public class CobwebProjectileEntity extends ThrowableItemProjectile{
 		super(entityType, level);
 	}
 
-	public CobwebProjectileEntity(Level level, LivingEntity thrower) {
-		super(ProjectileEntityTypes.COBWEB.get(), thrower, level);
+	public CobwebProjectileEntity(Level level, LivingEntity thrower, ItemStack itemStack) {
+		super(ProjectileEntityTypes.COBWEB.get(), thrower, level, itemStack);
 	}
 
 	public CobwebProjectileEntity(Level level) {

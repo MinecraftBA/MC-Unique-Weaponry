@@ -24,8 +24,8 @@ public abstract class BaseGrenadeEntity extends ThrowableItemProjectile {
 		super(entityType, level);
 	}
 
-	public BaseGrenadeEntity(EntityType<? extends ThrowableItemProjectile> entityType, LivingEntity shooter, Level level) {
-		super(entityType, shooter, level);
+	public BaseGrenadeEntity(EntityType<? extends ThrowableItemProjectile> entityType, LivingEntity shooter, Level level, ItemStack itemStack) {
+		super(entityType, shooter, level, itemStack);
 	}
 	
     public BaseGrenadeEntity(EntityType<? extends ThrowableItemProjectile> entityType, double x, double y, double z, Level level, ItemStack itemStack) {

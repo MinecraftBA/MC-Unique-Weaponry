@@ -24,7 +24,7 @@ import net.minecraft.world.phys.HitResult;
 public class PoisonGrenadeEntity  extends BaseGrenadeEntity {
 
 	// Defines that this entity will be registered as uniqueweaponry:flash_grenade
-	private static final ResourceKey<EntityType<?>> ENTITY_RES_KEY = ModResourceKey.createEntityTypeKey("ignite_grenade");
+	private static final ResourceKey<EntityType<?>> ENTITY_RES_KEY = ModResourceKey.createEntityTypeKey("poison_grenade");
 
 	public static EntityType<PoisonGrenadeEntity> createType() {
 
@@ -43,8 +43,8 @@ public class PoisonGrenadeEntity  extends BaseGrenadeEntity {
 		super(entityType, level);
 	}
 
-	public PoisonGrenadeEntity(LivingEntity thrower, Level level) {
-		super(GrenadeEntityTypes.POISON_GRENADE.get(), thrower, level);
+	public PoisonGrenadeEntity(LivingEntity thrower, Level level, ItemStack itemStack) {
+		super(GrenadeEntityTypes.POISON_GRENADE.get(), thrower, level, itemStack);
 	}
 	
 	public PoisonGrenadeEntity(double x, double y, double z, Level level, ItemStack itemStack) {

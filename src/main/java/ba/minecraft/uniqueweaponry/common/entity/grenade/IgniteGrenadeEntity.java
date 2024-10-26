@@ -41,8 +41,8 @@ public class IgniteGrenadeEntity extends BaseGrenadeEntity {
 		super(entityType, level);
 	}
 
-	public IgniteGrenadeEntity(LivingEntity thrower, Level level) {
-		super(GrenadeEntityTypes.IGNITE_GRENADE.get(), thrower, level);
+	public IgniteGrenadeEntity(LivingEntity thrower, Level level, ItemStack itemStack) {
+		super(GrenadeEntityTypes.IGNITE_GRENADE.get(), thrower, level, itemStack);
 	}
 	
 	public IgniteGrenadeEntity(double x, double y, double z, Level level, ItemStack itemStack) {

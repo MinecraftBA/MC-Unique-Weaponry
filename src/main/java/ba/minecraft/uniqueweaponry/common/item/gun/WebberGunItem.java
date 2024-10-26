@@ -74,7 +74,7 @@ public class WebberGunItem extends Item {
 		if (!level.isClientSide) {
 
 			// Create instance of grenade entity.
-			CobwebProjectileEntity cobweb = new CobwebProjectileEntity(level, shooter);;
+			CobwebProjectileEntity cobweb = new CobwebProjectileEntity(level, shooter);
 			
 			// Shoot grenade.
 			cobweb.shootFromRotation(shooter, shooter.getXRot(), shooter.getYRot(), 0.0F, 4.0F, 0.0F);
