@@ -1,6 +1,8 @@
 package ba.minecraft.uniqueweaponry.common.item.gun;
 
 import ba.minecraft.uniqueweaponry.common.entity.projectile.CobwebProjectileEntity;
+import ba.minecraft.uniqueweaponry.common.helpers.ModResourceKey;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -13,14 +15,18 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 
-public class WebberGunItem extends Item {
+public class WebberItem extends Item {
 
-	public WebberGunItem() {
+	// Defines that this item will be registered as uniqueweaponry:webber
+	private static final ResourceKey<Item> RES_KEY = ModResourceKey.createItemKey("webber");
+
+	public WebberItem() {
 		super(createProperties());
 	}
 
 	private static Properties createProperties() {
 		Properties properties = new Properties();
+		properties.setId(RES_KEY);
 		properties.stacksTo(1);
 		return properties;
 	}

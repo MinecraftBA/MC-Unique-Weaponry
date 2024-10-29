@@ -1,7 +1,9 @@
 package ba.minecraft.uniqueweaponry.common.item.staff;
 
 import ba.minecraft.uniqueweaponry.common.core.UniqueWeaponryModConfig;
+import ba.minecraft.uniqueweaponry.common.helpers.ModResourceKey;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
@@ -17,12 +19,16 @@ import net.minecraft.world.phys.Vec3;
 
 public class InfernalScepterStaffItem extends Item {
 
+	// Defines that this item will be registered as uniqueweaponry:infernal_scepter
+	private static final ResourceKey<Item> RES_KEY = ModResourceKey.createItemKey("infernal_scepter");
+
     public InfernalScepterStaffItem() {
         super(createProperties());
     }
     
     private static Properties createProperties() {
         Properties properties = new Properties();
+        properties.setId(RES_KEY);
         properties.stacksTo(1);
         properties.rarity(Rarity.EPIC);
         return properties;

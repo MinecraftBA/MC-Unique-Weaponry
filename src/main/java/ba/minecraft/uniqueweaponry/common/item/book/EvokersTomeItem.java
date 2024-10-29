@@ -1,6 +1,8 @@
 package ba.minecraft.uniqueweaponry.common.item.book;
 
 import ba.minecraft.uniqueweaponry.common.core.UniqueWeaponryModConfig;
+import ba.minecraft.uniqueweaponry.common.helpers.ModResourceKey;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -13,14 +15,18 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
-public class EvokersTomeBookItem extends Item {
+public class EvokersTomeItem extends Item {
     
-    public EvokersTomeBookItem() {
+	// Defines that this item will be registered as uniqueweaponry:evokers_tome
+	private static final ResourceKey<Item> RES_KEY = ModResourceKey.createItemKey("evokers_tome");
+
+    public EvokersTomeItem() {
         super(createProperties());
     }
     
     private static Properties createProperties() {
         Properties properties = new Properties();
+        properties.setId(RES_KEY);
         properties.stacksTo(1);
         return properties;
     }

@@ -3,6 +3,7 @@ package ba.minecraft.uniqueweaponry.common.item.grenade.base;
 import ba.minecraft.uniqueweaponry.common.entity.grenade.base.BaseGrenadeEntity;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Position;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -18,12 +19,13 @@ import net.minecraft.world.level.Level;
 
 public abstract class BaseGrenadeItem<T extends BaseGrenadeEntity> extends Item implements ProjectileItem {
 
-	public BaseGrenadeItem() {
-		super(createProperties());
+	public BaseGrenadeItem(ResourceKey<Item> resKey) {
+		super(createProperties(resKey));
 	}
 
-	private static Properties createProperties() {
+	private static Properties createProperties(ResourceKey<Item> resKey) {
 		Properties properties = new Properties();
+		properties.setId(resKey);
 		properties.stacksTo(16);
 		return properties;
 	}
