@@ -16,7 +16,6 @@ import net.minecraftforge.event.server.ServerStoppedEvent;
 import net.minecraftforge.event.server.ServerStoppingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -31,9 +30,9 @@ public class UniqueWeaponryMod
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public UniqueWeaponryMod()
+    public UniqueWeaponryMod(FMLJavaModLoadingContext context)
     {
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        IEventBus modEventBus = context.getModEventBus();
 
         // Registration of mod provided items.
         GrenadeItems.REGISTRY.register(modEventBus);
@@ -51,7 +50,7 @@ public class UniqueWeaponryMod
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
-        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, UniqueWeaponryModConfig.SPEC, MODID + "-server.toml");
+        context.registerConfig(ModConfig.Type.SERVER, UniqueWeaponryModConfig.SPEC, MODID + "-server.toml");
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)

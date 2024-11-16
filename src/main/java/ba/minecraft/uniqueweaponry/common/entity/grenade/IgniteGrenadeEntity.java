@@ -5,9 +5,9 @@ import java.util.List;
 import ba.minecraft.uniqueweaponry.common.core.UniqueWeaponryModConfig;
 import ba.minecraft.uniqueweaponry.common.entity.GrenadeEntityTypes;
 import ba.minecraft.uniqueweaponry.common.entity.grenade.base.BaseGrenadeEntity;
-import ba.minecraft.uniqueweaponry.common.helpers.ModResourceLocation;
+import ba.minecraft.uniqueweaponry.common.helpers.ModResourceKey;
 import ba.minecraft.uniqueweaponry.common.item.GrenadeItems;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -15,13 +15,14 @@ import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.EntityType.Builder;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
 
 public class IgniteGrenadeEntity extends BaseGrenadeEntity {
 
 	// Defines that this entity will be registered as uniqueweaponry:ignite_grenade
-	private static final ResourceLocation ENTITY_LOC = ModResourceLocation.Create("ignite_grenade");
+	private static final ResourceKey<EntityType<?>> ENTITY_RES_KEY = ModResourceKey.createEntityTypeKey("ignite_grenade");
 
 	public static EntityType<IgniteGrenadeEntity> createType() {
 
@@ -31,9 +32,7 @@ public class IgniteGrenadeEntity extends BaseGrenadeEntity {
 		builder.clientTrackingRange(20);
 		builder.updateInterval(20);
 
-		String id = ENTITY_LOC.toString();
-
-		EntityType<IgniteGrenadeEntity> entityType = builder.build(id);
+		EntityType<IgniteGrenadeEntity> entityType = builder.build(ENTITY_RES_KEY);
 
 		return entityType;
 	}
@@ -42,12 +41,12 @@ public class IgniteGrenadeEntity extends BaseGrenadeEntity {
 		super(entityType, level);
 	}
 
-	public IgniteGrenadeEntity(LivingEntity thrower, Level level) {
-		super(GrenadeEntityTypes.IGNITE_GRENADE.get(), thrower, level);
+	public IgniteGrenadeEntity(LivingEntity thrower, Level level, ItemStack itemStack) {
+		super(GrenadeEntityTypes.IGNITE_GRENADE.get(), thrower, level, itemStack);
 	}
 	
-	public IgniteGrenadeEntity(double x, double y, double z, Level level) {
-		super(GrenadeEntityTypes.IGNITE_GRENADE.get(), x, y, z, level);
+	public IgniteGrenadeEntity(double x, double y, double z, Level level, ItemStack itemStack) {
+		super(GrenadeEntityTypes.IGNITE_GRENADE.get(), x, y, z, level, itemStack);
 	}
 
 	public IgniteGrenadeEntity(Level level) {

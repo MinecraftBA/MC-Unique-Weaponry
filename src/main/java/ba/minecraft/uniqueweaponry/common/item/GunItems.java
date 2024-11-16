@@ -1,7 +1,7 @@
 package ba.minecraft.uniqueweaponry.common.item;
 
 import ba.minecraft.uniqueweaponry.common.core.UniqueWeaponryMod;
-import ba.minecraft.uniqueweaponry.common.item.gun.WebberGunItem;
+import ba.minecraft.uniqueweaponry.common.item.gun.WebberItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -14,7 +14,7 @@ public final class GunItems {
 	public static final DeferredRegister<Item> REGISTRY = 
 			DeferredRegister.create(ForgeRegistries.ITEMS, UniqueWeaponryMod.MODID);
 	
-	public static final RegistryObject<WebberGunItem> WEBBER = 
-			REGISTRY.register("webber", () -> new WebberGunItem());
+	public static final RegistryObject<WebberItem> WEBBER = 
+			REGISTRY.register("webber", () -> new WebberItem());
 	
 }

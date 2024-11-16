@@ -3,11 +3,12 @@ package ba.minecraft.uniqueweaponry.common.item.grenade.base;
 import ba.minecraft.uniqueweaponry.common.entity.grenade.base.BaseGrenadeEntity;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Position;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -18,22 +19,23 @@ import net.minecraft.world.level.Level;
 
 public abstract class BaseGrenadeItem<T extends BaseGrenadeEntity> extends Item implements ProjectileItem {
 
-	public BaseGrenadeItem() {
-		super(createProperties());
+	public BaseGrenadeItem(ResourceKey<Item> resKey) {
+		super(createProperties(resKey));
 	}
 
-	private static Properties createProperties() {
+	private static Properties createProperties(ResourceKey<Item> resKey) {
 		Properties properties = new Properties();
+		properties.setId(resKey);
 		properties.stacksTo(16);
 		return properties;
 	}
 
-	public abstract T CreateEntity(LivingEntity thrower, Level level);
+	public abstract T CreateEntity(LivingEntity thrower, Level level, ItemStack itemStack);
 	
-	public abstract T CreateEntity(double x, double y, double z, Level level);
+	public abstract T CreateEntity(double x, double y, double z, Level level, ItemStack itemStack);
 
 	@Override
-	public InteractionResultHolder<ItemStack> use(Level level, Player thrower, InteractionHand usedHand) {
+	public InteractionResult use(Level level, Player thrower, InteractionHand usedHand) {
 
 		// Get reference to grenade held in hand.
 		ItemStack itemStack = thrower.getItemInHand(usedHand);
@@ -46,7 +48,7 @@ public abstract class BaseGrenadeItem<T extends BaseGrenadeEntity> extends Item 
 		if (!level.isClientSide) {
 
 			// Create instance of grenade entity.
-			T grenade = CreateEntity(thrower, level);
+			T grenade = CreateEntity(thrower, level, itemStack);
 
 			// Set grenade item that is being thrown.
 			grenade.setItem(itemStack);
@@ -69,17 +71,14 @@ public abstract class BaseGrenadeItem<T extends BaseGrenadeEntity> extends Item 
 		}
 
 		// Incidate that use was successful.
-		return InteractionResultHolder.sidedSuccess(itemStack, level.isClientSide());
+		return InteractionResult.SUCCESS;
 	}
 
 	@Override
 	public Projectile asProjectile(Level level, Position position, ItemStack itemStack, Direction direction) {
 
 		// Create instance of grenade entity.
-		T grenade = CreateEntity(position.x(), position.y(), position.z(), level);
-
-		// Set item stack from which grenade was created.
-		grenade.setItem(itemStack);
+		T grenade = CreateEntity(position.x(), position.y(), position.z(), level, itemStack);
 		
 		return grenade;
 	}
